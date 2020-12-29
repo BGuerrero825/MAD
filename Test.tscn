@@ -18,6 +18,9 @@ margin_top = 233.736
 margin_right = 809.265
 margin_bottom = 323.736
 custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.952941, 0.960784, 0.101961, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "FUCK YOU WES"
 __meta__ = {
 "_edit_use_anchors_": false
