@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blank-map-of-the-continental-united-states.png-88dd1190ab1b0e36fa6320922275d154.stex"
+path="res://.import/blank-map-of-the-continental-united-states.png-005eecfe6d94b14e1dc799309abbcec7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blank-map-of-the-continental-united-states.png"
-dest_files=[ "res://.import/blank-map-of-the-continental-united-states.png-88dd1190ab1b0e36fa6320922275d154.stex" ]
+source_file="res://Reference Images/blank-map-of-the-continental-united-states.png"
+dest_files=[ "res://.import/blank-map-of-the-continental-united-states.png-005eecfe6d94b14e1dc799309abbcec7.stex" ]
 
 [params]
 
