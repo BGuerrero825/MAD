@@ -1,8 +1,8 @@
 extends ReferenceRect
 
 export var message := "80% CLOUDY"
-
 export var panel_location := 0  # panel location 0-3
+export var download_speed := 24
 
 var solution_phase := 0
 var solution_freq := 0
@@ -77,22 +77,32 @@ func _process(delta):
 	
 	# Start Download
 	if not downloading and Input.is_action_just_pressed(key_download):
+		$output_bar/output_message.text = ""
+		
 		print("phase_match: ", solution_phase == player_phase,  
 				"\tfreq_match: ", solution_freq == player_freq)
 		print("\tplayer: ", player_phase, " ", player_freq)
 		print("\tsolution: ", solution_phase, " ", solution_freq)
 		# Check if player phase and freq match solution
+		$output_bar/load_bar.rect_size.x = 1
 		downloading = true
 	elif downloading:
 		var orange = Color('fb9d28')
+		var red = Color('fa0404')
+		var green = Color('6abe30')
+		
 		$output_bar/load_bar.color = orange
 		
-		#  lerp(from: Variant, to: Variant, weight: float)
-		
-		if (solution_phase == player_phase) and (solution_freq == player_freq):
-			$output_bar/output_message.text = message
+		if $output_bar/load_bar.rect_size.x < 87:
+			$output_bar/load_bar.rect_size.x += download_speed * delta # grow bar
 		else:
-			$output_bar/output_message.text = "Bad Signal"
+			if (solution_phase == player_phase) and (solution_freq == player_freq):
+				$output_bar/output_message.text = message
+				$output_bar/load_bar.color = green
+			else:
+				$output_bar/output_message.text = "Bad Signal"
+				$output_bar/load_bar.color = red
+				downloading = false
 
 
 func assign_input():
@@ -127,4 +137,4 @@ func assign_input():
 	$dial_a_right.text = key_dial_a_right
 	$dial_b_left.text = key_dial_b_left
 	$dial_b_right.text = key_dial_b_right
-	
+	$download_prompt.text = key_download

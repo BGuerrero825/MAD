@@ -13,6 +13,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+panel_location = 3
 
 [node name="Graph1" type="ReferenceRect" parent="."]
 margin_left = 4.0
@@ -26,6 +27,7 @@ __meta__ = {
 [node name="line" type="Line2D" parent="Graph1"]
 points = PoolVector2Array( 88, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 width = 1.0
+default_color = Color( 0.980392, 0.0156863, 0.0156863, 1 )
 
 [node name="Graph2" type="ReferenceRect" parent="."]
 margin_left = 4.0
@@ -39,6 +41,7 @@ __meta__ = {
 [node name="line" type="Line2D" parent="Graph2"]
 points = PoolVector2Array( 88, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 width = 1.0
+default_color = Color( 0.415686, 0.745098, 0.188235, 1 )
 
 [node name="frame_overlay" type="Sprite" parent="."]
 position = Vector2( 48, 60 )
@@ -46,12 +49,12 @@ z_index = 1
 texture = ExtResource( 4 )
 
 [node name="DialA" type="Sprite" parent="."]
-position = Vector2( 24, 80 )
+position = Vector2( 24, 74 )
 texture = ExtResource( 2 )
 hframes = 4
 
 [node name="DialB" type="Sprite" parent="."]
-position = Vector2( 70, 80 )
+position = Vector2( 70, 74 )
 texture = ExtResource( 2 )
 hframes = 4
 
@@ -62,10 +65,11 @@ texture = ExtResource( 3 )
 
 [node name="dial_a_left" type="Label" parent="."]
 margin_left = 4.0
-margin_top = 55.0
+margin_top = 51.0
 margin_right = 13.0
-margin_bottom = 69.0
+margin_bottom = 65.0
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
 text = "A"
 align = 1
 __meta__ = {
@@ -73,11 +77,12 @@ __meta__ = {
 }
 
 [node name="dial_a_right" type="Label" parent="."]
-margin_left = 36.0
-margin_top = 55.0
-margin_right = 45.0
-margin_bottom = 69.0
+margin_left = 37.0
+margin_top = 51.0
+margin_right = 46.0
+margin_bottom = 65.0
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
 text = "A"
 align = 1
 __meta__ = {
@@ -86,10 +91,11 @@ __meta__ = {
 
 [node name="dial_b_left" type="Label" parent="."]
 margin_left = 50.0
-margin_top = 55.0
+margin_top = 51.0
 margin_right = 59.0
-margin_bottom = 69.0
+margin_bottom = 65.0
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
 text = "A"
 align = 1
 __meta__ = {
@@ -97,11 +103,25 @@ __meta__ = {
 }
 
 [node name="dial_b_right" type="Label" parent="."]
-margin_left = 82.0
-margin_top = 55.0
-margin_right = 91.0
-margin_bottom = 69.0
+margin_left = 83.0
+margin_top = 51.0
+margin_right = 92.0
+margin_bottom = 65.0
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
+text = "A"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="download_prompt" type="Label" parent="."]
+margin_left = 37.0
+margin_top = 87.0
+margin_right = 46.0
+margin_bottom = 101.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
 text = "A"
 align = 1
 __meta__ = {
@@ -111,10 +131,9 @@ __meta__ = {
 [node name="output_bar" type="Node2D" parent="."]
 
 [node name="load_bar" type="ColorRect" parent="output_bar"]
-visible = false
 margin_left = 4.0
 margin_top = 104.0
-margin_right = 92.0
+margin_right = 5.0
 margin_bottom = 116.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -126,7 +145,7 @@ margin_top = 103.0
 margin_right = 88.0
 margin_bottom = 134.0
 custom_fonts/font = ExtResource( 6 )
-text = "test
+text = "
 "
 align = 1
 __meta__ = {
