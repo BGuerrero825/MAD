@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://DialTune/DialTune.gd" type="Script" id=1]
+
+[node name="DialTune" type="ReferenceRect"]
+margin_right = 96.0
+margin_bottom = 120.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Graph1" type="ReferenceRect" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 92.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line2D" type="Line2D" parent="Graph1"]
+points = PoolVector2Array( 6, 14, 10, 12, 22, 10, 38, 14, 52, 10, 62, 4, 72, 12 )
+width = 2.0
