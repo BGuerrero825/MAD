@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://FindSeq/button.png" type="Texture" id=1]
+[ext_resource path="res://FindSeq/light.png" type="Texture" id=2]
+[ext_resource path="res://FindSeq/FindSeq.gd" type="Script" id=3]
+
+[node name="SoundSeq" type="ReferenceRect"]
+margin_right = 96.0
+margin_bottom = 120.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="light1" type="Sprite" parent="."]
+position = Vector2( 22, 20 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 3
+
+[node name="button" type="Sprite" parent="light1"]
+position = Vector2( 6, 14 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 2
+
+[node name="light2" type="Sprite" parent="."]
+position = Vector2( 52, 20 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 3
+
+[node name="button" type="Sprite" parent="light2"]
+position = Vector2( 6, 14 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 2
+
+[node name="light3" type="Sprite" parent="."]
+position = Vector2( 22, 48 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 3
+
+[node name="button" type="Sprite" parent="light3"]
+position = Vector2( 6, 14 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 2
+
+[node name="light4" type="Sprite" parent="."]
+position = Vector2( 52, 48 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 3
+
+[node name="button" type="Sprite" parent="light4"]
+position = Vector2( 6, 14 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 2
+
+[node name="light5" type="Sprite" parent="."]
+position = Vector2( 22, 76 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 3
+
+[node name="button" type="Sprite" parent="light5"]
+position = Vector2( 6, 14 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 2
+
+[node name="light6" type="Sprite" parent="."]
+position = Vector2( 52, 76 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 3
+
+[node name="button" type="Sprite" parent="light6"]
+position = Vector2( 6, 14 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 2
