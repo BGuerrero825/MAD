@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://DialTune/DialTune.gd" type="Script" id=1]
+[ext_resource path="res://DialTune/knob-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://DialTune/frame.png" type="Texture" id=3]
+[ext_resource path="res://DialTune/frame_overlay.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/soviet_font_12.tres" type="DynamicFont" id=6]
 
 [node name="DialTune" type="ReferenceRect"]
 margin_right = 96.0
@@ -15,45 +19,116 @@ margin_left = 4.0
 margin_top = 4.0
 margin_right = 92.0
 margin_bottom = 24.0
-editor_only = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="line" type="Line2D" parent="Graph1"]
-points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+points = PoolVector2Array( 88, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 width = 1.0
 
 [node name="Graph2" type="ReferenceRect" parent="."]
 margin_left = 4.0
-margin_top = 28.0
+margin_top = 29.0
 margin_right = 92.0
-margin_bottom = 48.0
-editor_only = false
+margin_bottom = 49.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="line" type="Line2D" parent="Graph2"]
-points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+points = PoolVector2Array( 88, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 width = 1.0
 
-[node name="DialA" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 84.0
-margin_right = 36.0
-margin_bottom = 104.0
-text = "0"
+[node name="frame_overlay" type="Sprite" parent="."]
+position = Vector2( 48, 60 )
+z_index = 1
+texture = ExtResource( 4 )
+
+[node name="DialA" type="Sprite" parent="."]
+position = Vector2( 24, 80 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="DialB" type="Sprite" parent="."]
+position = Vector2( 70, 80 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="frame" type="Sprite" parent="."]
+position = Vector2( 48, 60 )
+z_index = -1
+texture = ExtResource( 3 )
+
+[node name="dial_a_left" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 55.0
+margin_right = 13.0
+margin_bottom = 69.0
+custom_fonts/font = ExtResource( 6 )
+text = "A"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DialB" type="Label" parent="."]
-margin_left = 60.0
-margin_top = 84.0
-margin_right = 80.0
-margin_bottom = 104.0
-text = "0"
+[node name="dial_a_right" type="Label" parent="."]
+margin_left = 36.0
+margin_top = 55.0
+margin_right = 45.0
+margin_bottom = 69.0
+custom_fonts/font = ExtResource( 6 )
+text = "A"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dial_b_left" type="Label" parent="."]
+margin_left = 50.0
+margin_top = 55.0
+margin_right = 59.0
+margin_bottom = 69.0
+custom_fonts/font = ExtResource( 6 )
+text = "A"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dial_b_right" type="Label" parent="."]
+margin_left = 82.0
+margin_top = 55.0
+margin_right = 91.0
+margin_bottom = 69.0
+custom_fonts/font = ExtResource( 6 )
+text = "A"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="output_bar" type="Node2D" parent="."]
+
+[node name="load_bar" type="ColorRect" parent="output_bar"]
+visible = false
+margin_left = 4.0
+margin_top = 104.0
+margin_right = 92.0
+margin_bottom = 116.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="output_message" type="Label" parent="output_bar"]
+margin_left = 8.0
+margin_top = 103.0
+margin_right = 88.0
+margin_bottom = 134.0
+custom_fonts/font = ExtResource( 6 )
+text = "test
+"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

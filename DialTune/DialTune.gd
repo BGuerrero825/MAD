@@ -1,13 +1,15 @@
 extends ReferenceRect
 
+export var message := "80% CLOUDY"
+
 export var panel_location := 0  # panel location 0-3
 
-export var solution_phase := 0
-export var solution_freq := 0
+var solution_phase := 0
+var solution_freq := 0
 
 # Randomize in _ready() to not be the same as solution
-var player_phase := solution_phase
-var player_freq := solution_freq
+var player_phase := 0
+var player_freq := 0
 
 # Inputs
 var key_dial_a_left := '-'
@@ -16,12 +18,16 @@ var key_dial_b_left := '-'
 var key_dial_b_right := '-'
 var key_download := '-'
 
+var downloading = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assign_input()
 	
 	randomize()
+	solution_phase = randi() % 4
+	solution_freq = randi() % 4
+	
 	while player_phase == solution_phase:
 		player_phase = randi() % 4
 	while player_freq == solution_freq:
@@ -45,8 +51,8 @@ func draw_graph_2():
 		$Graph2/line.points[i] = Vector2(i+1, 8*sin(freq*(i + phase)) + 10)
 	
 	# Update Dials
-	$DialA.text = str(player_phase)
-	$DialB.text = str(player_freq)
+	$DialA.frame = player_phase
+	$DialB.frame = player_freq
 
 
 func _process(delta):
@@ -70,11 +76,23 @@ func _process(delta):
 		draw_graph_2()
 	
 	# Start Download
-	if Input.is_action_just_pressed(key_download):
+	if not downloading and Input.is_action_just_pressed(key_download):
 		print("phase_match: ", solution_phase == player_phase,  
 				"\tfreq_match: ", solution_freq == player_freq)
 		print("\tplayer: ", player_phase, " ", player_freq)
 		print("\tsolution: ", solution_phase, " ", solution_freq)
+		# Check if player phase and freq match solution
+		downloading = true
+	elif downloading:
+		var orange = Color('fb9d28')
+		$output_bar/load_bar.color = orange
+		
+		#  lerp(from: Variant, to: Variant, weight: float)
+		
+		if (solution_phase == player_phase) and (solution_freq == player_freq):
+			$output_bar/output_message.text = message
+		else:
+			$output_bar/output_message.text = "Bad Signal"
 
 
 func assign_input():
@@ -103,3 +121,10 @@ func assign_input():
 			key_dial_b_left = 'k'
 			key_dial_b_right = 'l'
 			key_download = 'm'
+	
+	# Update panel key indicators
+	$dial_a_left.text = key_dial_a_left
+	$dial_a_right.text = key_dial_a_right
+	$dial_b_left.text = key_dial_b_left
+	$dial_b_right.text = key_dial_b_right
+	

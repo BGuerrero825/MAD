@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/frame.png-b3a2958b6228e4b818f85d3e22d6f1e4.stex"
+path="res://.import/frame_overlay.png-e2ef71a9c4834e308231f8230fa23009.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DialTune/frame.png"
-dest_files=[ "res://.import/frame.png-b3a2958b6228e4b818f85d3e22d6f1e4.stex" ]
+source_file="res://DialTune/frame_overlay.png"
+dest_files=[ "res://.import/frame_overlay.png-e2ef71a9c4834e308231f8230fa23009.stex" ]
 
 [params]
 
