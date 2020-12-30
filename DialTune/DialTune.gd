@@ -1,9 +1,6 @@
 extends ReferenceRect
 
-export var key_dial_a_left := 'a'
-export var key_dial_a_right := 'd'
-export var key_dial_b_left := 'q'
-export var key_dial_b_right := 'e'
+export var panel_location := 0  # panel location 0-3
 
 export var solution_phase := 0
 export var solution_freq := 0
@@ -12,9 +9,17 @@ export var solution_freq := 0
 var player_phase := solution_phase
 var player_freq := solution_freq
 
+# Inputs
+var key_dial_a_left := '-'
+var key_dial_a_right := '-'
+var key_dial_b_left := '-'
+var key_dial_b_right := '-'
+var key_download := '-'
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	assign_input()
 	
 	randomize()
 	while player_phase == solution_phase:
@@ -48,26 +53,53 @@ func _process(delta):
 	
 	# INPUT
 	
-	# Left Dial
-	if Input.is_action_just_released("z"):
+	# Dial A
+	if Input.is_action_just_released(key_dial_a_left):
 		player_phase = max(player_phase-1, 0)
 		draw_graph_2()
-	elif Input.is_action_just_released("c"):
+	elif Input.is_action_just_released(key_dial_a_right):
 		player_phase = min(player_phase+1, 3)
 		draw_graph_2()
 	
-	# Right Dial
-	if Input.is_action_just_released("u"):
+	# Dial B
+	if Input.is_action_just_released(key_dial_b_left):
 		player_freq = max(player_freq-1, 0)
 		draw_graph_2()
-	elif Input.is_action_just_pressed("o"):
+	elif Input.is_action_just_pressed(key_dial_b_right):
 		player_freq = min(player_freq+1, 3)
 		draw_graph_2()
 	
 	# Start Download
-	if Input.is_action_just_pressed("space"):
+	if Input.is_action_just_pressed(key_download):
 		print("phase_match: ", solution_phase == player_phase,  
 				"\tfreq_match: ", solution_freq == player_freq)
 		print("\tplayer: ", player_phase, " ", player_freq)
 		print("\tsolution: ", solution_phase, " ", solution_freq)
 
+
+func assign_input():
+	match panel_location:
+		0:
+			key_dial_a_left = '1'
+			key_dial_a_right = '2'
+			key_dial_b_left = 'a'
+			key_dial_b_right = 's'
+			key_download = 'z'
+		1:
+			key_dial_a_left = '4'
+			key_dial_a_right = '5'
+			key_dial_b_left = 'd'
+			key_dial_b_right = 'f'
+			key_download = 'c'
+		2:
+			key_dial_a_left = '6'
+			key_dial_a_right = '7'
+			key_dial_b_left = 'g'
+			key_dial_b_right = 'h'
+			key_download = 'b'
+		3:
+			key_dial_a_left = '9'
+			key_dial_a_right = '0'
+			key_dial_b_left = 'k'
+			key_dial_b_right = 'l'
+			key_download = 'm'

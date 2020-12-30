@@ -16,17 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="MAD"
-run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=480
 window/size/height=270
-window/size/test_width=960
-window/size/test_height=540
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
+window/stretch/aspect="keep_height"
 
 [input]
 
