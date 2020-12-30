@@ -15,10 +15,45 @@ margin_left = 4.0
 margin_top = 4.0
 margin_right = 92.0
 margin_bottom = 24.0
+editor_only = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Line2D" type="Line2D" parent="Graph1"]
-points = PoolVector2Array( 6, 14, 10, 12, 22, 10, 38, 14, 52, 10, 62, 4, 72, 12 )
-width = 2.0
+[node name="line" type="Line2D" parent="Graph1"]
+points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+width = 1.0
+
+[node name="Graph2" type="ReferenceRect" parent="."]
+margin_left = 4.0
+margin_top = 28.0
+margin_right = 92.0
+margin_bottom = 48.0
+editor_only = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line" type="Line2D" parent="Graph2"]
+points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+width = 1.0
+
+[node name="DialA" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 84.0
+margin_right = 36.0
+margin_bottom = 104.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialB" type="Label" parent="."]
+margin_left = 60.0
+margin_top = 84.0
+margin_right = 80.0
+margin_bottom = 104.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
