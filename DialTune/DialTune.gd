@@ -1,6 +1,10 @@
 extends ReferenceRect
 
 export var message := "80% CLOUDY"
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 export var panel_location := 0  # panel location 0-3
 export var download_speed := 24
 
@@ -77,13 +81,17 @@ func _process(delta):
 	
 	# Start Download
 	if not downloading and Input.is_action_just_pressed(key_download):
+<<<<<<< Updated upstream
 		$output_bar/output_message.text = ""
 		
+=======
+>>>>>>> Stashed changes
 		print("phase_match: ", solution_phase == player_phase,  
 				"\tfreq_match: ", solution_freq == player_freq)
 		print("\tplayer: ", player_phase, " ", player_freq)
 		print("\tsolution: ", solution_phase, " ", solution_freq)
 		# Check if player phase and freq match solution
+<<<<<<< Updated upstream
 		$output_bar/load_bar.rect_size.x = 1
 		downloading = true
 	elif downloading:
@@ -103,6 +111,19 @@ func _process(delta):
 				$output_bar/output_message.text = "Bad Signal"
 				$output_bar/load_bar.color = red
 				downloading = false
+=======
+		downloading = true
+	elif downloading:
+		var orange = Color('fb9d28')
+		$output_bar/load_bar.color = orange
+		
+		#  lerp(from: Variant, to: Variant, weight: float)
+		
+		if (solution_phase == player_phase) and (solution_freq == player_freq):
+			$output_bar/output_message.text = message
+		else:
+			$output_bar/output_message.text = "Bad Signal"
+>>>>>>> Stashed changes
 
 
 func assign_input():
@@ -137,4 +158,8 @@ func assign_input():
 	$dial_a_right.text = key_dial_a_right
 	$dial_b_left.text = key_dial_b_left
 	$dial_b_right.text = key_dial_b_right
+<<<<<<< Updated upstream
 	$download_prompt.text = key_download
+=======
+	
+>>>>>>> Stashed changes

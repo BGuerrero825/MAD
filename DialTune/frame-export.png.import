@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/knob-Sheet.png-b851ea07310eb96a8fd79e193a3fe204.stex"
+path="res://.import/frame-export.png-f7f62fe6b485b9cff975db9ce936ceab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DialTune/knob-Sheet.png"
-dest_files=[ "res://.import/knob-Sheet.png-b851ea07310eb96a8fd79e193a3fe204.stex" ]
+source_file="res://DialTune/frame-export.png"
+dest_files=[ "res://.import/frame-export.png-f7f62fe6b485b9cff975db9ce936ceab.stex" ]
 
 [params]
 
