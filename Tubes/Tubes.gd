@@ -9,6 +9,8 @@ enum {HORZ=0, VERT=1, RED_HORZ=2, RED_VERT=3, GRN_HORZ=4,
 const TUBE_WIDTH = 6
 const COLOR_ORANGE = Color('fb9d28')
 const COLOR_GREEN = Color('6abe30')
+const COLOR_RED = Color('fa0404')
+const DARK_GRAY = Color('595652')
 
 var key1 = '-'
 var key2 = '-'
@@ -26,6 +28,10 @@ var electric_ball_vec = Vector2(1, 0)  # Physical location of the ball
 var electric_ball_dir = Vector2.RIGHT
 var reset_electric_ball = false
 
+var completion := 0  # set in ball_reached_end()
+onready var completion_lights = [$mx_frame_overlay/completion_1, 
+		$mx_frame_overlay/completion_2, $mx_frame_overlay/completion_3]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -42,12 +48,8 @@ func _ready():
 		current_loc += current_dir
 	
 	# randomize switch_gates order
-#	randomize()
-#	switch_gates.shuffle()
-	
-	# Assign keys to switch gates
-	
-	print(switch_gates)
+	randomize()
+	switch_gates.shuffle()
 	
 	for switch in switch_gates:
 		switch_gates_original_types.append(switch[0].frame)  # append switch enum
@@ -72,6 +74,11 @@ func _process(delta):
 			current_button.add_color_override("font_color", COLOR_ORANGE)
 			gate.frame = RED_HORZ
 			gate.frame = switch_gates_original_types[i]
+	
+	# Add clicking sounds
+	for key in key_list:
+		if Input.is_action_just_pressed(key):
+			$sounds/click.play()
 
 
 func _on_electric_move_timer_timeout():
@@ -79,7 +86,6 @@ func _on_electric_move_timer_timeout():
 	
 	# ball was reset
 	if reset_electric_ball:
-		print("RESET")
 		electric_ball_idx = 0
 		electric_ball_vec = Vector2(1, 0)
 		electric_ball_dir = Vector2.RIGHT
@@ -92,15 +98,30 @@ func _on_electric_move_timer_timeout():
 	
 	electric_ball_idx += 1
 	if electric_ball_idx > len(maze)-1:  # ball reached end of maze
-		# end electric_move_timer
-		$mx_frame/maze_corner/electric_ball.position = TUBE_WIDTH * Vector2(11,12)
+		ball_reached_end()
+
+
+func ball_reached_end():
+	print("BALL REACHED END")
+	reset_electric_ball = true
+	
+	completion += 1
+	completion_lights[completion-1].color = COLOR_GREEN
+	$mx_frame_overlay/message/ColorRect.color = COLOR_ORANGE
+	$mx_frame_overlay/message.text = "Some Sig."
+	
+	if completion >= 3:
+		print("COMPLETELY DONE")
 		$electric_move_timer.stop()
-		print("BALL REACHED END")
-		
+		$mx_frame_overlay/message/ColorRect.color = COLOR_GREEN
+		$mx_frame_overlay/message.text = "Good Sig."
+		# signal completion
+	
 
 
 func get_next_dir(dir : Vector2, tube_type : int):
 	match tube_type:
+		
 		# Detect bad dir on these
 		RED_HORZ, GRN_HORZ, RED_VERT, GRN_VERT:
 			# reset ball idx
@@ -170,11 +191,12 @@ func spawn_tube(vec : Vector2, tube_type : int, idx : int):
 func get_maze_list():
 	# 0,0 HORZ and 11,11 VERT are always there
 	# Only use RED_HORZ & RED_VERT to indicate location, do not use GRN
+	# Add one extra vert to the end of the list
 	var m1 = [HORZ, HORZ, HORZ, HORZ, TOP_RIGHT, VERT, VERT, BOT_LEFT, HORZ, 
 			BOT_RIGHT, VERT, TOP_LEFT, TOP_RIGHT, VERT, VERT, RED_HORZ, VERT, 
 			BOT_RIGHT, HORZ, HORZ, HORZ, HORZ, HORZ, RED_HORZ, HORZ, TOP_LEFT,
 			VERT, RED_VERT, BOT_LEFT, HORZ, HORZ, HORZ, BOT_RIGHT, TOP_LEFT, 
-			HORZ, RED_VERT, HORZ, TOP_RIGHT, VERT, VERT, BOT_LEFT, HORZ, HORZ, TOP_RIGHT]
+			HORZ, RED_VERT, HORZ, TOP_RIGHT, VERT, VERT, BOT_LEFT, HORZ, HORZ, TOP_RIGHT, VERT]
 	
 	# create list of mazes, return random maze
 	return m1
