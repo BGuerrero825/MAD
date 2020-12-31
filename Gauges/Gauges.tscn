@@ -290,3 +290,11 @@ __meta__ = {
 
 [node name="output_bar" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3, 101 )
+
+[node name="load_bar" parent="output_bar" index="0"]
+margin_right = 2.0
+
+[node name="output_message" parent="output_bar" index="1"]
+visible = false
+
+[editable path="output_bar"]

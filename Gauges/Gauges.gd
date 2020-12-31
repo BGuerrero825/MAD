@@ -7,6 +7,7 @@ var gauge_decay := [0,0,0]
 var gauge_light := []
 var correct := [0,0,0]
 var completed := false
+var held_time := 0
 # Inputs
 var key = ['-','-','-']
 
@@ -46,6 +47,14 @@ func _process(delta):
 			gauge_val[i] -= 1
 			gauge_decay[i] = 0
 			update_gauge(i, gauge_val[i], gauge_light[i])
+	#check win condition
+	if (floor(gauge_val[0]) == correct[0] and floor(gauge_val[1]) == correct[1] and floor(gauge_val[2]) == correct[2]):
+		held_time += 1
+		set_progress(held_time * 100/60)
+		print(held_time)
+		if held_time > 60:
+			completed = true
+			set_progress(100)
 	
 func update_gauge(num, val, light):
 	var color = 1 
@@ -57,10 +66,11 @@ func update_gauge(num, val, light):
 		light[i].frame = color
 	for j in range(floor(val), light.size()):
 		light[j].frame = 0
-	#check win condition
-	if (floor(gauge_val[0]) == correct[0] and floor(gauge_val[1]) == correct[1] and floor(gauge_val[2]) == correct[2]):
-		completed = true
-	
+
+#update progress bar at the bottom of the game, 86 is the length of the bar
+func set_progress(percent):
+	get_node("output_bar/load_bar").rect_size.x = int(86 * percent/100)
+
 func assign_input():
 	match panel_location:
 		0:

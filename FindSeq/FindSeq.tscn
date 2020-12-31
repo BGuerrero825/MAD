@@ -155,3 +155,8 @@ __meta__ = {
 
 [node name="output_bar" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3, 101 )
+
+[node name="output_message" parent="output_bar" index="1"]
+visible = false
+
+[editable path="output_bar"]
