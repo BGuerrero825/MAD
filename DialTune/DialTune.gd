@@ -39,14 +39,14 @@ func _ready():
 
 func draw_graph_1():
 	var freq : float = solution_freq + 1
-	var phase : float = solution_phase * 1.5
+	var phase : float = solution_phase
 	for i in range(len($Graph1/line.points)):
 		$Graph1/line.points[i] = Vector2(i+1, 8*sin(freq*i + phase) + 10)
 
 
 func draw_graph_2():
 	var freq : float = player_freq + 1
-	var phase : float = player_phase * 1.5
+	var phase : float = player_phase
 	for i in range(len($Graph2/line.points)):
 		$Graph2/line.points[i] = Vector2(i+1, 8*sin(freq*i + phase) + 10)
 	
