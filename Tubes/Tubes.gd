@@ -1,6 +1,7 @@
 extends Node2D
 
 export var panel_location := 0
+export var electric_move_time := 0.5  # assign in _ready()
 
 enum {HORZ=0, VERT=1, RED_HORZ=2, RED_VERT=3, GRN_HORZ=4, 
 				GRN_VERT=5, TOP_RIGHT=6, BOT_RIGHT=7, BOT_LEFT=8, TOP_LEFT=9}
@@ -13,21 +14,30 @@ var key1 = '-'
 var key2 = '-'
 var key3 = '-'
 
+var key_list = []  # populated in assign_input()
+onready var key_label_list = [$mx_frame_overlay/key1, $mx_frame_overlay/key2, $mx_frame_overlay/key3]
+
 var maze = get_maze_list()
 var switch_gates = []  # Populated in spawn_tube()
 var switch_gates_original_types = []  # Copied from switch_gates in _ready()
 
+var electric_ball_idx = 0  # index where the ball is currently in the maze list
+var electric_ball_vec = Vector2(1, 0)  # Physical location of the ball
+var electric_ball_dir = Vector2.RIGHT
+var reset_electric_ball = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
 	assign_input()
+	$electric_move_timer.wait_time = electric_move_time
 	
 	# Generate tubes based on maze list
 	var current_loc = Vector2(1, 0)
 	var current_dir = Vector2.RIGHT # start going right
-	for tube in maze:
-		spawn_tube(current_loc, tube)
+	for i in range(len(maze)):
+		var tube = maze[i]
+		spawn_tube(current_loc, tube, i)
 		current_dir = get_next_dir(current_dir, tube)
 		current_loc += current_dir
 	
@@ -37,35 +47,79 @@ func _ready():
 	
 	# Assign keys to switch gates
 	
+	print(switch_gates)
 	
 	for switch in switch_gates:
-		switch_gates_original_types.append(switch.frame)  # append switch enum
-	
-	print(switch_gates)
-	print(switch_gates_original_types)
+		switch_gates_original_types.append(switch[0].frame)  # append switch enum
 
 
 func _process(delta):
+	
+	# Get key inputs to switch gate directions
 	for i in range(len(switch_gates)):
-		var gate = switch_gates[i]
-		if Input.is_action_pressed(key1):
-#			$mx_frame_overlay/key1.custom_colors/font_color = 
+		
+		var current_key = key_list[i%3]
+		var current_button = key_label_list[i%3]
+		
+		var gate = switch_gates[i][0]
+		if Input.is_action_pressed(current_key):
+			current_button.add_color_override("font_color", COLOR_GREEN)
 			if gate.frame == RED_HORZ:
 				gate.frame = GRN_VERT
 			elif gate.frame == RED_VERT:
 				gate.frame = GRN_HORZ
 		else:
+			current_button.add_color_override("font_color", COLOR_ORANGE)
 			gate.frame = RED_HORZ
 			gate.frame = switch_gates_original_types[i]
-			#gate.frame = switch_gates_original_types[switch_gates]
+
+
+func _on_electric_move_timer_timeout():
+	# electric_ball_idx, electric_ball_vec, electric_ball_dir
+	
+	# ball was reset
+	if reset_electric_ball:
+		print("RESET")
+		electric_ball_idx = 0
+		electric_ball_vec = Vector2(1, 0)
+		electric_ball_dir = Vector2.RIGHT
+		reset_electric_ball = false
+	
+	$mx_frame/maze_corner/electric_ball.position = TUBE_WIDTH * electric_ball_vec
+	
+	electric_ball_dir = get_next_dir(electric_ball_dir, maze[electric_ball_idx])
+	electric_ball_vec += electric_ball_dir
+	
+	electric_ball_idx += 1
+	if electric_ball_idx > len(maze)-1:  # ball reached end of maze
+		# end electric_move_timer
+		$mx_frame/maze_corner/electric_ball.position = TUBE_WIDTH * Vector2(11,12)
+		$electric_move_timer.stop()
+		print("BALL REACHED END")
+		
+
 
 func get_next_dir(dir : Vector2, tube_type : int):
 	match tube_type:
 		# Detect bad dir on these
-		RED_HORZ, GRN_HORZ:
-			return dir
-		RED_VERT, GRN_VERT:
-			return dir
+		RED_HORZ, GRN_HORZ, RED_VERT, GRN_VERT:
+			# reset ball idx
+			if electric_ball_dir == Vector2.DOWN or electric_ball_dir == Vector2.UP:
+#				if switch_gates[1] == electric_ball_idx:
+#					print("MATCHING SWITCH")
+				for switch in switch_gates:
+					if switch[1] == electric_ball_idx:
+						if not (switch[0].frame == RED_VERT or switch[0].frame == GRN_VERT):
+							print("\tCOLLISION")
+							reset_electric_ball = true
+			elif electric_ball_dir == Vector2.LEFT or electric_ball_dir == Vector2.RIGHT:
+				for switch in switch_gates:
+					if switch[1] == electric_ball_idx:
+						if not (switch[0].frame == RED_HORZ or switch[0].frame == GRN_HORZ):
+							print("COLLISION")
+							reset_electric_ball = true
+			
+			return dir  # always return next dir for maze gen
 		
 		# Change dir
 		TOP_RIGHT:
@@ -98,7 +152,7 @@ func get_next_dir(dir : Vector2, tube_type : int):
 			return dir
 
 
-func spawn_tube(vec : Vector2, tube_type : int):
+func spawn_tube(vec : Vector2, tube_type : int, idx : int):
 # x = offset (0 - 11)
 # y = offset (0 - 11)
 # tube_type = tube_type enum
@@ -108,7 +162,7 @@ func spawn_tube(vec : Vector2, tube_type : int):
 	new_tube.offset.y = TUBE_WIDTH * vec.y
 	
 	if tube_type in [RED_HORZ, RED_VERT]:
-		switch_gates.append(new_tube)
+		switch_gates.append([new_tube, idx])
 	
 	$mx_frame/maze_corner.add_child(new_tube)
 
@@ -117,7 +171,7 @@ func get_maze_list():
 	# 0,0 HORZ and 11,11 VERT are always there
 	# Only use RED_HORZ & RED_VERT to indicate location, do not use GRN
 	var m1 = [HORZ, HORZ, HORZ, HORZ, TOP_RIGHT, VERT, VERT, BOT_LEFT, HORZ, 
-			BOT_RIGHT, VERT, TOP_LEFT, TOP_RIGHT, VERT, VERT, RED_VERT, VERT, 
+			BOT_RIGHT, VERT, TOP_LEFT, TOP_RIGHT, VERT, VERT, RED_HORZ, VERT, 
 			BOT_RIGHT, HORZ, HORZ, HORZ, HORZ, HORZ, RED_HORZ, HORZ, TOP_LEFT,
 			VERT, RED_VERT, BOT_LEFT, HORZ, HORZ, HORZ, BOT_RIGHT, TOP_LEFT, 
 			HORZ, RED_VERT, HORZ, TOP_RIGHT, VERT, VERT, BOT_LEFT, HORZ, HORZ, TOP_RIGHT]
@@ -145,7 +199,13 @@ func assign_input():
 			key2 = 'k'
 			key3 = 'l'
 	
+	# Update key_list
+	key_list = [key1, key2, key3]
+	
 	# Update panel key indicators
 	$mx_frame_overlay/key1.text = key1
 	$mx_frame_overlay/key2.text = key2
 	$mx_frame_overlay/key3.text = key3
+
+
+

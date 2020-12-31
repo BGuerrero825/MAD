@@ -4,6 +4,10 @@ export var message := "80% CLOUDY"
 export var panel_location := 0  # panel location 0-3
 export var download_speed := 24
 
+const COLOR_ORANGE = Color('fb9d28')
+const COLOR_GREEN = Color('6abe30')
+const COLOR_RED = Color('fa0404')
+
 var solution_phase := 0
 var solution_freq := 0
 
@@ -79,30 +83,46 @@ func _process(delta):
 	if not downloading and Input.is_action_just_pressed(key_download):
 		$output_bar/output_message.text = ""
 		
-		print("phase_match: ", solution_phase == player_phase,  
-				"\tfreq_match: ", solution_freq == player_freq)
-		print("\tplayer: ", player_phase, " ", player_freq)
-		print("\tsolution: ", solution_phase, " ", solution_freq)
 		# Check if player phase and freq match solution
 		$output_bar/load_bar.rect_size.x = 1
 		downloading = true
 	elif downloading:
-		var orange = Color('fb9d28')
-		var red = Color('fa0404')
-		var green = Color('6abe30')
 		
-		$output_bar/load_bar.color = orange
+		$output_bar/load_bar.color = COLOR_ORANGE
 		
 		if $output_bar/load_bar.rect_size.x < 87:
 			$output_bar/load_bar.rect_size.x += download_speed * delta # grow bar
 		else:
 			if (solution_phase == player_phase) and (solution_freq == player_freq):
 				$output_bar/output_message.text = message
-				$output_bar/load_bar.color = green
+				$output_bar/load_bar.color = COLOR_GREEN
 			else:
 				$output_bar/output_message.text = "Bad Signal"
-				$output_bar/load_bar.color = red
+				$output_bar/load_bar.color = COLOR_RED
 				downloading = false
+	
+	
+	# Button Animation and Sounds
+	if Input.is_action_pressed(key_dial_a_left):
+		$dial_a_left.add_color_override("font_color", COLOR_GREEN)
+	else:
+		$dial_a_left.add_color_override("font_color", COLOR_ORANGE)
+	if Input.is_action_pressed(key_dial_a_right):
+		$dial_a_right.add_color_override("font_color", COLOR_GREEN)
+	else:
+		$dial_a_right.add_color_override("font_color", COLOR_ORANGE)
+	if Input.is_action_pressed(key_dial_b_left):
+		$dial_b_left.add_color_override("font_color", COLOR_GREEN)
+	else:
+		$dial_b_left.add_color_override("font_color", COLOR_ORANGE)
+	if Input.is_action_pressed(key_dial_b_right):
+		$dial_b_right.add_color_override("font_color", COLOR_GREEN)
+	else:
+		$dial_b_right.add_color_override("font_color", COLOR_ORANGE)
+	if Input.is_action_pressed(key_download):
+		$download_prompt.add_color_override("font_color", COLOR_GREEN)
+	else:
+		$download_prompt.add_color_override("font_color", COLOR_ORANGE)
 
 
 func assign_input():
