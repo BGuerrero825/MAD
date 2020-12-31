@@ -1,10 +1,6 @@
 extends ReferenceRect
 
 export var message := "80% CLOUDY"
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 export var panel_location := 0  # panel location 0-3
 export var download_speed := 24
 
