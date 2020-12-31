@@ -1,0 +1,292 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://output_bar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Gauges/Gauges.gd" type="Script" id=3]
+[ext_resource path="res://FindSeq/panel.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/soviet_font_12.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Gauges/gauge.png" type="Texture" id=6]
+[ext_resource path="res://Gauges/light.png" type="Texture" id=7]
+[ext_resource path="res://Gauges/button.png" type="Texture" id=8]
+
+[node name="Guages" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="panel" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="gauge_0" type="Sprite" parent="."]
+position = Vector2( 15, 26 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="lights" type="Node2D" parent="gauge_0"]
+
+[node name="light_0" type="Sprite" parent="gauge_0/lights"]
+position = Vector2( 2, 62 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_1" type="Sprite" parent="gauge_0/lights"]
+position = Vector2( 2, 56 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_2" type="Sprite" parent="gauge_0/lights"]
+position = Vector2( 2, 50 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_3" type="Sprite" parent="gauge_0/lights"]
+position = Vector2( 2, 44 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_4" type="Sprite" parent="gauge_0/lights"]
+position = Vector2( 2, 38 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_5" type="Sprite" parent="gauge_0/lights"]
+position = Vector2( 2, 32 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_6" type="Sprite" parent="gauge_0/lights"]
+position = Vector2( 2, 26 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_7" type="Sprite" parent="gauge_0/lights"]
+position = Vector2( 2, 20 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_8" type="Sprite" parent="gauge_0/lights"]
+position = Vector2( 2, 14 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_9" type="Sprite" parent="gauge_0/lights"]
+position = Vector2( 2, 8 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_10" type="Sprite" parent="gauge_0/lights"]
+position = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="button" type="Sprite" parent="gauge_0"]
+position = Vector2( 2, -9 )
+texture = ExtResource( 8 )
+centered = false
+hframes = 2
+
+[node name="button_label" type="Label" parent="gauge_0"]
+margin_left = 1.0
+margin_top = -23.0
+margin_right = 10.0
+margin_bottom = -9.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.980392, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gauge_1" type="Sprite" parent="."]
+position = Vector2( 40, 26 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="lights" type="Node2D" parent="gauge_1"]
+
+[node name="light_0" type="Sprite" parent="gauge_1/lights"]
+position = Vector2( 2, 62 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_1" type="Sprite" parent="gauge_1/lights"]
+position = Vector2( 2, 56 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_2" type="Sprite" parent="gauge_1/lights"]
+position = Vector2( 2, 50 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_3" type="Sprite" parent="gauge_1/lights"]
+position = Vector2( 2, 44 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_4" type="Sprite" parent="gauge_1/lights"]
+position = Vector2( 2, 38 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_5" type="Sprite" parent="gauge_1/lights"]
+position = Vector2( 2, 32 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_6" type="Sprite" parent="gauge_1/lights"]
+position = Vector2( 2, 26 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_7" type="Sprite" parent="gauge_1/lights"]
+position = Vector2( 2, 20 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_8" type="Sprite" parent="gauge_1/lights"]
+position = Vector2( 2, 14 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_9" type="Sprite" parent="gauge_1/lights"]
+position = Vector2( 2, 8 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_10" type="Sprite" parent="gauge_1/lights"]
+position = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="button" type="Sprite" parent="gauge_1"]
+position = Vector2( 2, -9 )
+texture = ExtResource( 8 )
+centered = false
+hframes = 2
+
+[node name="button_label" type="Label" parent="gauge_1"]
+margin_left = 1.0
+margin_top = -23.0
+margin_right = 10.0
+margin_bottom = -9.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.980392, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gauge_2" type="Sprite" parent="."]
+position = Vector2( 65, 26 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="lights" type="Node2D" parent="gauge_2"]
+
+[node name="light_0" type="Sprite" parent="gauge_2/lights"]
+position = Vector2( 2, 62 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_1" type="Sprite" parent="gauge_2/lights"]
+position = Vector2( 2, 56 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_2" type="Sprite" parent="gauge_2/lights"]
+position = Vector2( 2, 50 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_3" type="Sprite" parent="gauge_2/lights"]
+position = Vector2( 2, 44 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_4" type="Sprite" parent="gauge_2/lights"]
+position = Vector2( 2, 38 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_5" type="Sprite" parent="gauge_2/lights"]
+position = Vector2( 2, 32 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_6" type="Sprite" parent="gauge_2/lights"]
+position = Vector2( 2, 26 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_7" type="Sprite" parent="gauge_2/lights"]
+position = Vector2( 2, 20 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_8" type="Sprite" parent="gauge_2/lights"]
+position = Vector2( 2, 14 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_9" type="Sprite" parent="gauge_2/lights"]
+position = Vector2( 2, 8 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="light_10" type="Sprite" parent="gauge_2/lights"]
+position = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+
+[node name="button" type="Sprite" parent="gauge_2"]
+position = Vector2( 2, -9 )
+texture = ExtResource( 8 )
+centered = false
+hframes = 2
+
+[node name="button_label" type="Label" parent="gauge_2"]
+margin_left = 1.0
+margin_top = -23.0
+margin_right = 10.0
+margin_bottom = -9.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.980392, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="output_bar" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3, 101 )
