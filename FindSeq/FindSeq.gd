@@ -5,6 +5,7 @@ export var panel_location := 0  # panel location 0-3
 # Randomize in _ready() to not be the same as solution
 var sequence := [1,6,4,3,2,5]
 var seq_pos = 0
+var flash = 0
 
 # Light objects
 onready var lights := [get_node("light1"), get_node("light2"), 
@@ -26,6 +27,7 @@ func _ready():
 	sequence.shuffle()
 	
 func _process(delta):
+	# receive inputs while sequence incomplete
 	if seq_pos < 6:
 		button_logic(key_1, 1)
 		button_logic(key_2, 2)
@@ -33,6 +35,18 @@ func _process(delta):
 		button_logic(key_4, 4)
 		button_logic(key_5, 5)
 		button_logic(key_6, 6)
+	#flash buttons when sequence complete
+	else:
+		flash += 1
+		for light in lights:
+			light.get_node("button").frame = 0
+		if flash == 15:
+			for light in lights:
+				light.frame = 0
+		if flash == 30:
+			for light in lights:
+				light.frame = 2
+			flash = 0
 
 func button_logic(key, num):
 		# check for correct seq on initial press
@@ -88,3 +102,10 @@ func assign_input():
 			key_4 = 'o'
 			key_5 = 'j'
 			key_6 = 'k'
+
+	$light1/button_label.text = key_1
+	$light2/button_label.text = key_2
+	$light3/button_label.text = key_3
+	$light4/button_label.text = key_4
+	$light5/button_label.text = key_5
+	$light6/button_label.text = key_6

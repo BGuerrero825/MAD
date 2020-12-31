@@ -1,32 +1,10 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=6 format=2]
-=======
-[gd_scene load_steps=7 format=2]
->>>>>>> Stashed changes
 
 [ext_resource path="res://DialTune/DialTune.gd" type="Script" id=1]
 [ext_resource path="res://DialTune/knob-Sheet.png" type="Texture" id=2]
 [ext_resource path="res://DialTune/frame.png" type="Texture" id=3]
 [ext_resource path="res://DialTune/frame_overlay.png" type="Texture" id=4]
-<<<<<<< Updated upstream
 [ext_resource path="res://Fonts/soviet_font_12.tres" type="DynamicFont" id=6]
-=======
-[ext_resource path="res://Fonts/soviet_font.tres" type="DynamicFont" id=5]
-
-[sub_resource type="Animation" id=1]
-resource_name = "grow_bar"
-tracks/0/type = "method"
-tracks/0/path = NodePath("output_bar/load_bar")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
-}
->>>>>>> Stashed changes
 
 [node name="DialTune" type="ReferenceRect"]
 margin_right = 96.0
@@ -71,20 +49,12 @@ z_index = 1
 texture = ExtResource( 4 )
 
 [node name="DialA" type="Sprite" parent="."]
-<<<<<<< Updated upstream
 position = Vector2( 24, 74 )
-=======
-position = Vector2( 24, 80 )
->>>>>>> Stashed changes
 texture = ExtResource( 2 )
 hframes = 4
 
 [node name="DialB" type="Sprite" parent="."]
-<<<<<<< Updated upstream
 position = Vector2( 70, 74 )
-=======
-position = Vector2( 70, 80 )
->>>>>>> Stashed changes
 texture = ExtResource( 2 )
 hframes = 4
 
@@ -95,18 +65,11 @@ texture = ExtResource( 3 )
 
 [node name="dial_a_left" type="Label" parent="."]
 margin_left = 4.0
-<<<<<<< Updated upstream
 margin_top = 51.0
 margin_right = 13.0
 margin_bottom = 65.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
-=======
-margin_top = 55.0
-margin_right = 13.0
-margin_bottom = 69.0
-custom_fonts/font = ExtResource( 5 )
->>>>>>> Stashed changes
 text = "A"
 align = 1
 __meta__ = {
@@ -115,18 +78,11 @@ __meta__ = {
 
 [node name="dial_a_right" type="Label" parent="."]
 margin_left = 37.0
-<<<<<<< Updated upstream
 margin_top = 51.0
 margin_right = 46.0
 margin_bottom = 65.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
-=======
-margin_top = 55.0
-margin_right = 46.0
-margin_bottom = 69.0
-custom_fonts/font = ExtResource( 5 )
->>>>>>> Stashed changes
 text = "A"
 align = 1
 __meta__ = {
@@ -135,18 +91,11 @@ __meta__ = {
 
 [node name="dial_b_left" type="Label" parent="."]
 margin_left = 50.0
-<<<<<<< Updated upstream
 margin_top = 51.0
 margin_right = 59.0
 margin_bottom = 65.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
-=======
-margin_top = 55.0
-margin_right = 59.0
-margin_bottom = 69.0
-custom_fonts/font = ExtResource( 5 )
->>>>>>> Stashed changes
 text = "A"
 align = 1
 __meta__ = {
@@ -154,7 +103,6 @@ __meta__ = {
 }
 
 [node name="dial_b_right" type="Label" parent="."]
-<<<<<<< Updated upstream
 margin_left = 83.0
 margin_top = 51.0
 margin_right = 92.0
@@ -174,34 +122,18 @@ margin_right = 46.0
 margin_bottom = 101.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
-=======
-margin_left = 84.0
-margin_top = 56.0
-margin_right = 93.0
-margin_bottom = 70.0
-custom_fonts/font = ExtResource( 5 )
->>>>>>> Stashed changes
 text = "A"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-<<<<<<< Updated upstream
 [node name="output_bar" type="Node2D" parent="."]
-=======
-[node name="output_bar" type="AnimationPlayer" parent="."]
-anims/grow_bar = SubResource( 1 )
->>>>>>> Stashed changes
 
 [node name="load_bar" type="ColorRect" parent="output_bar"]
 margin_left = 4.0
 margin_top = 104.0
-<<<<<<< Updated upstream
 margin_right = 5.0
-=======
-margin_right = 92.0
->>>>>>> Stashed changes
 margin_bottom = 116.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -212,13 +144,8 @@ margin_left = 8.0
 margin_top = 103.0
 margin_right = 88.0
 margin_bottom = 134.0
-<<<<<<< Updated upstream
 custom_fonts/font = ExtResource( 6 )
 text = "
-=======
-custom_fonts/font = ExtResource( 5 )
-text = "test
->>>>>>> Stashed changes
 "
 align = 1
 __meta__ = {
