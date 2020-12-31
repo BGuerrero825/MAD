@@ -6,13 +6,8 @@
 [ext_resource path="res://DialTune/frame_overlay.png" type="Texture" id=4]
 [ext_resource path="res://Fonts/soviet_font_12.tres" type="DynamicFont" id=6]
 
-[node name="DialTune" type="ReferenceRect"]
-margin_right = 96.0
-margin_bottom = 120.0
+[node name="DialTune" type="Node2D"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 panel_location = 3
 
 [node name="Graph1" type="ReferenceRect" parent="."]

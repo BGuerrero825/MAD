@@ -1,4 +1,4 @@
-extends ReferenceRect
+extends Node2D
 
 export var panel_location := 0  # panel location 0-3
 

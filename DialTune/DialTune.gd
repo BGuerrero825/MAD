@@ -1,4 +1,4 @@
-extends ReferenceRect
+extends Node2D
 
 export var message := "80% CLOUDY"
 export var panel_location := 0  # panel location 0-3
@@ -48,7 +48,7 @@ func draw_graph_2():
 	var freq : float = player_freq + 1
 	var phase : float = player_phase * 1.5
 	for i in range(len($Graph2/line.points)):
-		$Graph2/line.points[i] = Vector2(i+1, 8*sin(freq*(i + phase)) + 10)
+		$Graph2/line.points[i] = Vector2(i+1, 8*sin(freq*i + phase) + 10)
 	
 	# Update Dials
 	$DialA.frame = player_phase
