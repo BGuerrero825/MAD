@@ -1,7 +1,7 @@
 extends Node2D
 
 export var panel_location := 0
-export var electric_move_time := 0.5  # assign in _ready()
+export var electric_move_time := 0.2  # assign in _ready()
 
 enum {HORZ=0, VERT=1, RED_HORZ=2, RED_VERT=3, GRN_HORZ=4, 
 				GRN_VERT=5, TOP_RIGHT=6, BOT_RIGHT=7, BOT_LEFT=8, TOP_LEFT=9}
@@ -102,7 +102,6 @@ func _on_electric_move_timer_timeout():
 
 
 func ball_reached_end():
-	print("BALL REACHED END")
 	reset_electric_ball = true
 	
 	completion += 1
@@ -111,7 +110,6 @@ func ball_reached_end():
 	$mx_frame_overlay/message.text = "Some Sig."
 	
 	if completion >= 3:
-		print("COMPLETELY DONE")
 		$electric_move_timer.stop()
 		$mx_frame_overlay/message/ColorRect.color = COLOR_GREEN
 		$mx_frame_overlay/message.text = "Good Sig."
@@ -126,18 +124,14 @@ func get_next_dir(dir : Vector2, tube_type : int):
 		RED_HORZ, GRN_HORZ, RED_VERT, GRN_VERT:
 			# reset ball idx
 			if electric_ball_dir == Vector2.DOWN or electric_ball_dir == Vector2.UP:
-#				if switch_gates[1] == electric_ball_idx:
-#					print("MATCHING SWITCH")
 				for switch in switch_gates:
 					if switch[1] == electric_ball_idx:
 						if not (switch[0].frame == RED_VERT or switch[0].frame == GRN_VERT):
-							print("\tCOLLISION")
 							reset_electric_ball = true
 			elif electric_ball_dir == Vector2.LEFT or electric_ball_dir == Vector2.RIGHT:
 				for switch in switch_gates:
 					if switch[1] == electric_ball_idx:
 						if not (switch[0].frame == RED_HORZ or switch[0].frame == GRN_HORZ):
-							print("COLLISION")
 							reset_electric_ball = true
 			
 			return dir  # always return next dir for maze gen
@@ -198,8 +192,31 @@ func get_maze_list():
 			VERT, RED_VERT, BOT_LEFT, HORZ, HORZ, HORZ, BOT_RIGHT, TOP_LEFT, 
 			HORZ, RED_VERT, HORZ, TOP_RIGHT, VERT, VERT, BOT_LEFT, HORZ, HORZ, TOP_RIGHT, VERT]
 	
+	var m2 = [HORZ, HORZ, HORZ, HORZ, HORZ, TOP_RIGHT, BOT_RIGHT, HORZ, HORZ, 
+			RED_VERT, HORZ, TOP_LEFT, VERT, VERT, VERT, BOT_LEFT, HORZ, HORZ, 
+			RED_HORZ, HORZ, BOT_RIGHT, VERT, TOP_RIGHT, HORZ, BOT_LEFT, TOP_LEFT,
+			HORZ, HORZ, RED_VERT, HORZ, TOP_RIGHT, VERT, VERT, RED_HORZ, VERT,
+			BOT_RIGHT, HORZ, HORZ, RED_VERT, HORZ, TOP_LEFT, BOT_RIGHT, TOP_LEFT,
+			BOT_LEFT, HORZ, HORZ, HORZ, TOP_RIGHT, VERT, BOT_LEFT, HORZ, RED_VERT,
+			HORZ, TOP_RIGHT, VERT]
+	
+	var m3 = [HORZ, HORZ, TOP_RIGHT, VERT, RED_HORZ, BOT_LEFT, BOT_RIGHT, TOP_LEFT,
+			HORZ, HORZ, TOP_RIGHT, RED_VERT, VERT, VERT, RED_HORZ, VERT, BOT_RIGHT,
+			HORZ, HORZ, HORZ, RED_VERT, TOP_LEFT, BOT_LEFT, HORZ, HORZ, HORZ, HORZ,
+			HORZ, TOP_RIGHT, RED_HORZ, BOT_LEFT, BOT_RIGHT, VERT, VERT, TOP_LEFT,
+			HORZ, TOP_RIGHT, RED_VERT, VERT, RED_HORZ, VERT]
+	
+	var m4 = [TOP_RIGHT, VERT, VERT, VERT, RED_HORZ, VERT, VERT, VERT, VERT,
+			BOT_LEFT, HORZ, BOT_RIGHT, VERT, VERT, RED_VERT, VERT, VERT, VERT,
+			RED_HORZ, TOP_LEFT, HORZ, HORZ, TOP_RIGHT, VERT, RED_HORZ, BOT_LEFT,
+			HORZ, HORZ, HORZ, TOP_RIGHT, RED_HORZ, BOT_RIGHT, HORZ, HORZ, HORZ,
+			TOP_LEFT, VERT, VERT, VERT, BOT_LEFT, RED_HORZ, HORZ, BOT_RIGHT,
+			VERT, VERT, TOP_LEFT, HORZ, TOP_RIGHT, VERT, VERT, RED_HORZ, VERT, VERT]
+	
+	var maze_options = [m1, m2, m3, m4]
+	randomize()
 	# create list of mazes, return random maze
-	return m1
+	return maze_options[randi()%len(maze_options)]
 
 
 func assign_input():

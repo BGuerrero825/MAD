@@ -9,7 +9,6 @@
 
 [node name="Tubes" type="Node2D"]
 script = ExtResource( 2 )
-electric_move_time = 0.2
 
 [node name="mx_frame" type="Sprite" parent="."]
 position = Vector2( 48, 60 )
