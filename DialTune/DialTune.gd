@@ -103,26 +103,40 @@ func _process(delta):
 	
 	
 	# Button Animation and Sounds
-	if Input.is_action_pressed(key_dial_a_left):
+	if Input.is_action_just_pressed(key_dial_a_left):
 		$dial_a_left.add_color_override("font_color", COLOR_GREEN)
-	else:
+		$sounds/click_in.play()
+		$sounds/radio_adjust2.play()
+	elif Input.is_action_just_released(key_dial_a_left):
 		$dial_a_left.add_color_override("font_color", COLOR_ORANGE)
-	if Input.is_action_pressed(key_dial_a_right):
+		$sounds/click_out.play()
+	if Input.is_action_just_pressed(key_dial_a_right):
 		$dial_a_right.add_color_override("font_color", COLOR_GREEN)
-	else:
+		$sounds/click_in.play()
+		$sounds/radio_adjust2.play()
+	elif Input.is_action_just_released(key_dial_a_right):
 		$dial_a_right.add_color_override("font_color", COLOR_ORANGE)
-	if Input.is_action_pressed(key_dial_b_left):
+		$sounds/click_out.play()
+	if Input.is_action_just_pressed(key_dial_b_left):
 		$dial_b_left.add_color_override("font_color", COLOR_GREEN)
-	else:
+		$sounds/click_in.play()
+		$sounds/radio_adjust1.play()
+	elif Input.is_action_just_released(key_dial_b_left):
 		$dial_b_left.add_color_override("font_color", COLOR_ORANGE)
-	if Input.is_action_pressed(key_dial_b_right):
+		$sounds/click_out.play()
+	if Input.is_action_just_pressed(key_dial_b_right):
 		$dial_b_right.add_color_override("font_color", COLOR_GREEN)
-	else:
+		$sounds/click_in.play()
+		$sounds/radio_adjust1.play()
+	elif Input.is_action_just_released(key_dial_b_right):
 		$dial_b_right.add_color_override("font_color", COLOR_ORANGE)
-	if Input.is_action_pressed(key_download):
+		$sounds/click_out.play()
+	if Input.is_action_just_pressed(key_download):
 		$download_prompt.add_color_override("font_color", COLOR_GREEN)
-	else:
+		$sounds/click_in.play()
+	elif Input.is_action_just_released(key_download):
 		$download_prompt.add_color_override("font_color", COLOR_ORANGE)
+		$sounds/click_out.play()
 
 
 func assign_input():
