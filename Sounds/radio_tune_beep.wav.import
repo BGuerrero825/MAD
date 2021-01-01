@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/radio_tune_beep.wav-8a54e941d0340d7fd8568a7a6cc8cd37.sample"
+
+[deps]
+
+source_file="res://Sounds/radio_tune_beep.wav"
+dest_files=[ "res://.import/radio_tune_beep.wav-8a54e941d0340d7fd8568a7a6cc8cd37.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

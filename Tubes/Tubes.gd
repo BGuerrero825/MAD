@@ -78,7 +78,10 @@ func _process(delta):
 	# Add clicking sounds
 	for key in key_list:
 		if Input.is_action_just_pressed(key):
-			$sounds/click.play()
+			#$sounds/click.play()
+			$sounds/click_in.play()
+		if Input.is_action_just_released(key):
+			$sounds/click_out.play()
 
 
 func _on_electric_move_timer_timeout():
