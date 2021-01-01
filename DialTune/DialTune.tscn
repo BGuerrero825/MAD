@@ -1,14 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://DialTune/DialTune.gd" type="Script" id=1]
 [ext_resource path="res://DialTune/knob-Sheet.png" type="Texture" id=2]
 [ext_resource path="res://DialTune/frame.png" type="Texture" id=3]
 [ext_resource path="res://DialTune/frame_overlay.png" type="Texture" id=4]
-[ext_resource path="res://Sounds/fuji_click1.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/sounds.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Fonts/soviet_font_12.tres" type="DynamicFont" id=6]
-[ext_resource path="res://Sounds/fuji_click2.wav" type="AudioStream" id=7]
-[ext_resource path="res://Sounds/tune_sound1.wav" type="AudioStream" id=8]
-[ext_resource path="res://Sounds/tune_sound2.wav" type="AudioStream" id=9]
 
 [node name="DialTune" type="Node2D"]
 script = ExtResource( 1 )
@@ -151,16 +148,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sounds" type="Node2D" parent="."]
-
-[node name="click_in" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 5 )
-
-[node name="click_out" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 7 )
-
-[node name="radio_adjust1" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 8 )
-
-[node name="radio_adjust2" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 9 )
+[node name="sounds" parent="." instance=ExtResource( 5 )]
