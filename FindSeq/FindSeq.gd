@@ -37,6 +37,7 @@ func _process(delta):
 		button_logic(key_6, 6)
 	#flash buttons when sequence complete
 	else:
+		set_progress(100)
 		flash += 1
 		for light in lights:
 			light.get_node("button").frame = 0
@@ -55,8 +56,10 @@ func button_logic(key, num):
 		if num == sequence[seq_pos]:
 			lights[num - 1].frame = 2
 			seq_pos += 1
+			set_progress(seq_pos * 100/6)
 		# else reset sequence and change lights to off
 		else:
+			set_progress(0)
 			for light in lights:
 				light.frame = 0
 				seq_pos = 0
@@ -72,6 +75,10 @@ func button_logic(key, num):
 		if lights[num - 1].frame != 2:
 			lights[num - 1].frame = 0
 			
+#update progress bar at the bottom of the game, 86 is the length of the bar
+func set_progress(percent):
+	get_node("output_bar/load_bar").rect_size.x = int(86 * percent/100)
+	
 func assign_input():
 	match panel_location:
 		0:
