@@ -1,0 +1,221 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://output_bar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://KeyTurn/KeyTurn.gd" type="Script" id=2]
+[ext_resource path="res://KeyTurn/light.png" type="Texture" id=3]
+[ext_resource path="res://FindSeq/panel.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/soviet_font_12.tres" type="DynamicFont" id=5]
+[ext_resource path="res://KeyTurn/key_right.png" type="Texture" id=6]
+[ext_resource path="res://KeyTurn/key_left.png" type="Texture" id=9]
+
+[node name="KeyTurn" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="panel" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="keys" type="Node2D" parent="."]
+
+[node name="key_0" type="Sprite" parent="keys"]
+position = Vector2( 26, 6 )
+texture = ExtResource( 9 )
+centered = false
+hframes = 2
+
+[node name="light" type="Sprite" parent="keys/key_0"]
+position = Vector2( -8, 7 )
+texture = ExtResource( 3 )
+centered = false
+hframes = 2
+
+[node name="button_label" type="Label" parent="keys/key_0"]
+margin_left = -18.0
+margin_top = 3.0
+margin_right = -9.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.980392, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_1" type="Sprite" parent="keys"]
+position = Vector2( 50, 6 )
+texture = ExtResource( 6 )
+centered = false
+hframes = 2
+
+[node name="light" type="Sprite" parent="keys/key_1"]
+position = Vector2( 21, 7 )
+texture = ExtResource( 3 )
+centered = false
+hframes = 2
+
+[node name="button_label" type="Label" parent="keys/key_1"]
+margin_left = 29.0
+margin_top = 3.0
+margin_right = 38.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.980392, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_2" type="Sprite" parent="keys"]
+position = Vector2( 26, 29 )
+texture = ExtResource( 9 )
+centered = false
+hframes = 2
+
+[node name="light" type="Sprite" parent="keys/key_2"]
+position = Vector2( -8, 7 )
+texture = ExtResource( 3 )
+centered = false
+hframes = 2
+
+[node name="button_label" type="Label" parent="keys/key_2"]
+margin_left = -18.0
+margin_top = 3.0
+margin_right = -9.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.980392, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_3" type="Sprite" parent="keys"]
+position = Vector2( 50, 29 )
+texture = ExtResource( 6 )
+centered = false
+hframes = 2
+
+[node name="light" type="Sprite" parent="keys/key_3"]
+position = Vector2( 21, 7 )
+texture = ExtResource( 3 )
+centered = false
+hframes = 2
+
+[node name="button_label" type="Label" parent="keys/key_3"]
+margin_left = 29.0
+margin_top = 3.0
+margin_right = 38.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.980392, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_4" type="Sprite" parent="keys"]
+position = Vector2( 26, 52 )
+texture = ExtResource( 9 )
+centered = false
+hframes = 2
+
+[node name="light" type="Sprite" parent="keys/key_4"]
+position = Vector2( -8, 7 )
+texture = ExtResource( 3 )
+centered = false
+hframes = 2
+
+[node name="button_label" type="Label" parent="keys/key_4"]
+margin_left = -18.0
+margin_top = 3.0
+margin_right = -9.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.980392, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_5" type="Sprite" parent="keys"]
+position = Vector2( 50, 52 )
+texture = ExtResource( 6 )
+centered = false
+hframes = 2
+
+[node name="light" type="Sprite" parent="keys/key_5"]
+position = Vector2( 21, 7 )
+texture = ExtResource( 3 )
+centered = false
+hframes = 2
+
+[node name="button_label" type="Label" parent="keys/key_5"]
+margin_left = 29.0
+margin_top = 3.0
+margin_right = 38.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.980392, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_6" type="Sprite" parent="keys"]
+position = Vector2( 26, 75 )
+texture = ExtResource( 9 )
+centered = false
+hframes = 2
+
+[node name="light" type="Sprite" parent="keys/key_6"]
+position = Vector2( -8, 7 )
+texture = ExtResource( 3 )
+centered = false
+hframes = 2
+
+[node name="button_label" type="Label" parent="keys/key_6"]
+margin_left = -18.0
+margin_top = 3.0
+margin_right = -9.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.980392, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_7" type="Sprite" parent="keys"]
+position = Vector2( 50, 75 )
+texture = ExtResource( 6 )
+centered = false
+hframes = 2
+
+[node name="light" type="Sprite" parent="keys/key_7"]
+position = Vector2( 21, 7 )
+texture = ExtResource( 3 )
+centered = false
+hframes = 2
+
+[node name="button_label" type="Label" parent="keys/key_7"]
+margin_left = 29.0
+margin_top = 3.0
+margin_right = 38.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.980392, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="output_bar" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3, 101 )
+
+[node name="load_bar" parent="output_bar" index="0"]
+margin_right = 2.0
+
+[node name="output_message" parent="output_bar" index="1"]
+visible = false
+
+[editable path="output_bar"]
