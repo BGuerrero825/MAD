@@ -48,9 +48,10 @@ func _process(delta):
 			gauge_decay[i] = 0
 			update_gauge(i, gauge_val[i], gauge_light[i])
 	#check win condition
-	if not completed and (floor(gauge_val[0]) == correct[0] and floor(gauge_val[1]) == correct[1] and floor(gauge_val[2]) == correct[2]):
+	if (floor(gauge_val[0]) == correct[0] and floor(gauge_val[1]) == correct[1] and floor(gauge_val[2]) == correct[2]):
 		held_time += 1
 		set_progress(held_time * 100/60)
+		print(held_time)
 		if held_time > 60:
 			completed = true
 			set_progress(100)
