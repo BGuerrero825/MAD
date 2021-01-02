@@ -13,7 +13,7 @@
 [ext_resource path="res://Sounds/sounds.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.11132, 9.67575 )
+extents = Vector2( 0.12539, 9.67575 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 48, 48 )
@@ -91,7 +91,22 @@ __meta__ = {
 
 [node name="spawn_point" type="Position2D" parent="."]
 position = Vector2( 48, 96 )
-z_index = 5
+z_index = 10
+
+[node name="ColorRect" type="ColorRect" parent="spawn_point"]
+margin_left = -3.91161
+margin_top = 1.91767
+margin_right = 4.08839
+margin_bottom = 6.91767
+color = Color( 0.415686, 0.745098, 0.188235, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spawn" type="Sprite" parent="spawn_point"]
+position = Vector2( 0, 5 )
+scale = Vector2( 1, -1 )
+texture = ExtResource( 7 )
 
 [node name="reflector_left" type="Area2D" parent="."]
 position = Vector2( 0, 19 )
@@ -178,6 +193,7 @@ __meta__ = {
 
 [node name="target" type="Sprite" parent="target"]
 position = Vector2( -6, -6 )
+z_index = 5
 texture = ExtResource( 7 )
 centered = false
 
