@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mid_beeps.wav-466805bd81a7ed91c54955fb1d3701b2.sample"
+
+[deps]
+
+source_file="res://Sounds/mid_beeps.wav"
+dest_files=[ "res://.import/mid_beeps.wav-466805bd81a7ed91c54955fb1d3701b2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

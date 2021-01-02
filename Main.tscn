@@ -29,21 +29,25 @@ position = Vector2( 374, 112 )
 z_as_relative = false
 
 [node name="cover_0" type="Sprite" parent="StaticScreen"]
+visible = false
 position = Vector2( 58, 168 )
 z_index = 3
 texture = ExtResource( 3 )
 
 [node name="cover_1" type="Sprite" parent="StaticScreen"]
+visible = false
 position = Vector2( 179, 168 )
 z_index = 3
 texture = ExtResource( 3 )
 
 [node name="cover_2" type="Sprite" parent="StaticScreen"]
+visible = false
 position = Vector2( 301, 168 )
 z_index = 3
 texture = ExtResource( 3 )
 
 [node name="cover_3" type="Sprite" parent="StaticScreen"]
+visible = false
 position = Vector2( 422, 168 )
 z_index = 3
 texture = ExtResource( 3 )

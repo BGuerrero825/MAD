@@ -91,5 +91,4 @@ func assign_input():
 
 	$gauge_0/button_label.text = key[0]
 	$gauge_1/button_label.text = key[1]
-	$gauge_2/button_label.text = key[2]
-	
+	$gauge_2/button_label.text = key[2]	
