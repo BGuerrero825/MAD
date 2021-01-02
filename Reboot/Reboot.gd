@@ -16,7 +16,7 @@ onready var key_label_list = [$ui/yes_key, $ui/no_key]
 onready var key_sprite_list = [$ui/yes_button, $ui/no_button]
 
 # Computer console format: [ [true_for_yes], ["message_string"] ]
-var console_list := [ [true, "24952.2 CORRUPTED FILES DETECTED. PLEASE REBOOT THE COMPUTER SYSTEM. PROCEED?"] ]
+var console_list := [ [true, "24952 CORRUPTED FILES DETECTED. PLEASE REBOOT THE COMPUTER SYSTEM. PRESS YES TO PROCEED"] ]
 
 var console_idx := 0
 var console_loading := false
@@ -45,7 +45,8 @@ func _ready():
 			[true, "DOES\n 23 PLUS 14 EQUAL 37?"],
 			[false, "DOES\n 28 PLUS 12 EQUAL 30?"],
 			[true, "DOES\n 28 PLUS 12 EQUAL 40?"] ]
-#	new_console_challenges.shuffle()
+	new_console_challenges.shuffle()
+	new_console_challenges.resize(4)  # truncate challenge count
 	console_list += new_console_challenges
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -84,9 +85,11 @@ func _process(delta):
 		if Input.is_action_just_pressed(key_list[i]):
 			key_label_list[i].add_color_override("font_color", COLOR_GREEN)
 			key_sprite_list[i].frame = 1
+			$sounds/click_in.play()
 		elif Input.is_action_just_released(key_list[i]):
 			key_label_list[i].add_color_override("font_color", COLOR_ORANGE)
 			key_sprite_list[i].frame = 0
+			$sounds/click_out.play()
 
 
 func _on_load_timer_timeout():
