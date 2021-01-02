@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/panel.png-329fd1912796e993585c72c06c836587.stex"
+path="res://.import/button.png-9b98a9d375627334052065136f253c74.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Gauges/panel.png"
-dest_files=[ "res://.import/panel.png-329fd1912796e993585c72c06c836587.stex" ]
+source_file="res://Binary/button.png"
+dest_files=[ "res://.import/button.png-9b98a9d375627334052065136f253c74.stex" ]
 
 [params]
 
