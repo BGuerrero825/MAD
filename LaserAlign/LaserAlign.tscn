@@ -119,7 +119,7 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="reflector_left"]
-position = Vector2( 7.39729, 13.5297 )
+position = Vector2( 9.39729, 13.5297 )
 shape = SubResource( 1 )
 
 [node name="reflector_right" type="Area2D" parent="."]
@@ -134,7 +134,7 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="reflector_right"]
-position = Vector2( 7.39729, 13.5297 )
+position = Vector2( 5.39729, 13.5297 )
 shape = SubResource( 1 )
 
 [node name="up_down_arrow" type="Sprite" parent="."]
