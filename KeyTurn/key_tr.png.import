@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/light.png-b49d9fef2f706ec2b2cd68d78d4b978c.stex"
+path="res://.import/key_tr.png-c63d7db840e34a4e8e7ce6464a823eab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Charge/light.png"
-dest_files=[ "res://.import/light.png-b49d9fef2f706ec2b2cd68d78d4b978c.stex" ]
+source_file="res://KeyTurn/key_tr.png"
+dest_files=[ "res://.import/key_tr.png-c63d7db840e34a4e8e7ce6464a823eab.stex" ]
 
 [params]
 
