@@ -1,0 +1,192 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://LaserAlign/laser_frame.png" type="Texture" id=1]
+[ext_resource path="res://LaserAlign/LaserAlign.gd" type="Script" id=2]
+[ext_resource path="res://LaserAlign/reflector_sprite.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/soviet_font_12.tres" type="DynamicFont" id=4]
+[ext_resource path="res://LaserAlign/up_down_arrow.png" type="Texture" id=5]
+[ext_resource path="res://output_bar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://LaserAlign/target.png" type="Texture" id=7]
+[ext_resource path="res://LaserAlign/reflector_left.gd" type="Script" id=8]
+[ext_resource path="res://LaserAlign/Borders.gd" type="Script" id=9]
+[ext_resource path="res://LaserAlign/target.gd" type="Script" id=10]
+[ext_resource path="res://Sounds/sounds.tscn" type="PackedScene" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3.11132, 9.67575 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 48, 48 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 6, 3 )
+
+[node name="LaserAlign" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="laser_frame" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="top_of_frame" type="Position2D" parent="laser_frame"]
+position = Vector2( 7, 19 )
+
+[node name="bottom_of_frame" type="Position2D" parent="laser_frame"]
+position = Vector2( 8, 76 )
+
+[node name="ui" type="Control" parent="."]
+margin_right = 96.0
+margin_bottom = 120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_left_up" type="Label" parent="ui"]
+margin_left = 5.0
+margin_top = 104.0
+margin_right = 14.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_left_down" type="Label" parent="ui"]
+margin_left = 30.0
+margin_top = 104.0
+margin_right = 39.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_right_up" type="Label" parent="ui"]
+margin_left = 58.0
+margin_top = 104.0
+margin_right = 67.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_right_down" type="Label" parent="ui"]
+margin_left = 82.0
+margin_top = 104.0
+margin_right = 91.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.984314, 0.615686, 0.156863, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spawn_point" type="Position2D" parent="."]
+position = Vector2( 48, 96 )
+z_index = 5
+
+[node name="reflector_left" type="Area2D" parent="."]
+position = Vector2( 0, 19 )
+z_index = 10
+script = ExtResource( 8 )
+
+[node name="reflector_sprite" type="Sprite" parent="reflector_left"]
+position = Vector2( 4, 3 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reflector_left"]
+position = Vector2( 7.39729, 13.5297 )
+shape = SubResource( 1 )
+
+[node name="reflector_right" type="Area2D" parent="."]
+position = Vector2( 80, 24 )
+z_index = 10
+script = ExtResource( 8 )
+
+[node name="reflector_sprite" type="Sprite" parent="reflector_right"]
+position = Vector2( 11, 3 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reflector_right"]
+position = Vector2( 7.39729, 13.5297 )
+shape = SubResource( 1 )
+
+[node name="up_down_arrow" type="Sprite" parent="."]
+position = Vector2( 16, 105 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="up_down_arrow2" type="Sprite" parent="."]
+position = Vector2( 68, 105 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="output_bar" parent="." instance=ExtResource( 6 )]
+position = Vector2( 3, 3 )
+
+[node name="Borders" type="Area2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="left" type="CollisionShape2D" parent="Borders"]
+position = Vector2( -46, 64 )
+shape = SubResource( 2 )
+
+[node name="right" type="CollisionShape2D" parent="Borders"]
+position = Vector2( 142, 64 )
+shape = SubResource( 2 )
+
+[node name="bottom" type="CollisionShape2D" parent="Borders"]
+position = Vector2( 48, 157 )
+shape = SubResource( 2 )
+
+[node name="top" type="CollisionShape2D" parent="Borders"]
+position = Vector2( 48, -29 )
+shape = SubResource( 2 )
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[node name="target" type="Area2D" parent="."]
+position = Vector2( 48, 21 )
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="target"]
+position = Vector2( 0, 2 )
+shape = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="target"]
+margin_left = -3.93934
+margin_top = -1.2487
+margin_right = 4.06066
+margin_bottom = 2.7513
+color = Color( 0.980392, 0.0156863, 0.0156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="target" type="Sprite" parent="target"]
+position = Vector2( -6, -6 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="sounds" parent="." instance=ExtResource( 11 )]
+[connection signal="area_entered" from="reflector_left" to="reflector_left" method="_on_reflector_left_area_entered"]
+[connection signal="area_entered" from="reflector_right" to="reflector_right" method="_on_reflector_left_area_entered"]
+[connection signal="area_entered" from="Borders" to="Borders" method="_on_Borders_area_entered"]
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="area_entered" from="target" to="." method="_on_target_area_entered"]
+[connection signal="area_entered" from="target" to="target" method="_on_target_area_entered"]
+
+[editable path="output_bar"]
