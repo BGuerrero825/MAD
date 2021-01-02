@@ -9,3 +9,7 @@ export_presets.cfg
 data_*/
 *.aseprite
 *.aseprite
+cover.png.import
+*.import
+Gauges/gauge.png.import
+Gauges/panel.png.import
