@@ -109,17 +109,17 @@ func set_progress(percent):
 func assign_input():
 	match panel_location:
 		0:
-			key[0] = '1'
-			key[1] = '2'
-			key[2] = '3'
+			key[0] = 'q'
+			key[1] = 'w'
+			key[2] = 's'
 		1:
 			key[0] = 'e'
 			key[1] = 'r'
 			key[2] = 't'
 		2:
-			key[0] = '6'
-			key[1] = '7'
-			key[2] = '8'
+			key[0] = 'g'
+			key[1] = 'y'
+			key[2] = 'u'
 		3:
 			key[0] = 'i'
 			key[1] = 'o'

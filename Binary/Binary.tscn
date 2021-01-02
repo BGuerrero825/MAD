@@ -101,7 +101,7 @@ __meta__ = {
 }
 
 [node name="row_1" type="Node2D" parent="."]
-position = Vector2( 32, 50 )
+position = Vector2( 32, 48 )
 
 [node name="light_1" type="Sprite" parent="row_1"]
 position = Vector2( 36, 2 )
