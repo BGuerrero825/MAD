@@ -51,7 +51,12 @@ texture = ExtResource( 2 )
 [node name="ShiftTimer" type="Timer" parent="."]
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="HeartBeat" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="HeartBeat" to="." method="_on_HeartBeat_timeout"]

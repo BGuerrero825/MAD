@@ -4,7 +4,7 @@ var panels_game_type = [-1, -1, -1, -1]  # -1 indicates no game
 var active_games = []
 
 const WAIT_BETWEEN_GAMES = 20
-const READ_TIME = 10
+const READ_TIME = 8
 
 onready var binary = load("res://Binary/Binary.tscn")
 onready var charge = load("res://Charge/Charge.tscn")
@@ -16,8 +16,8 @@ onready var laserAlign = load("res://LaserAlign/LaserAlign.tscn")
 onready var reboot = load("res://Reboot/Reboot.tscn")
 onready var tubes = load("res://Tubes/Tubes.tscn")
 
-onready var game_list =       [binary, charge, dialTune, findSeq, gauges, laserAlign, reboot, tubes]
-var game_timer_list = [30,     30,     30,       30,      30,     30,         30,     30]
+onready var game_list = [binary, charge, dialTune, findSeq, gauges, laserAlign, reboot, tubes, keyTurn]
+var game_timer_list =   [40,     25,     30,       25,      30,     25,         45,     45,    30]
 
 var message_options = ['FREQ', 'SAT', 'CODE', 'SER', 'ORD', 'MSG', 'SIGN', 'STAT', 'GEO', 'POS', 'TRAJ', 'KEY', 'RES', 'SPD']
 var number_of_messages = 5
@@ -36,12 +36,11 @@ func _ready():
 	# Randomize messages
 #	message_options_list.shuffle()
 	for i in range(number_of_messages):
-		message_prompt_list.append(message_options[i] + " - " + str(randi()%5+1))
+		message_prompt_list.append(message_options[i] + ": " + str(randi()%5+1))
 	message_saved_prompt_list = message_prompt_list.duplicate()
 
 
-func _process(delta):
-	
+func _on_HeartBeat_timeout():
 	for active_game in active_games:
 		if active_game:
 			if active_game.completed:
@@ -115,4 +114,3 @@ func _on_read_timer_timeout(game):
 		game.free()
 		if number_of_messages <= 0:
 			print("ALL MESSAGES RECEIVED")
-

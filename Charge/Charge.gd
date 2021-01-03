@@ -33,7 +33,7 @@ func _process(delta):
 	
 	if Input.is_action_just_released(key):
 		current_charge = ceil(current_charge)
-		print(current_charge)
+#		print(current_charge)
 		# button animation
 		get_node("button").frame = 0
 		if current_charge > 22:
