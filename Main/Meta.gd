@@ -5,6 +5,7 @@ var active_games = []
 
 const WAIT_BETWEEN_GAMES = 20
 const READ_TIME = 8
+const SHIFT_TIME = 120
 
 onready var binary = load("res://Binary/Binary.tscn")
 onready var charge = load("res://Charge/Charge.tscn")
@@ -19,7 +20,7 @@ onready var tubes = load("res://Tubes/Tubes.tscn")
 onready var game_list = [binary, charge, dialTune, findSeq, gauges, laserAlign, reboot, tubes, keyTurn]
 
 var message_options = ['FREQ', 'SAT', 'CODE', 'SER', 'ORD', 'MSG', 'SIGN', 'STAT', 'GEO', 'POS', 'TRAJ', 'KEY', 'RES', 'SPD']
-var number_of_messages = 5
+var number_of_messages = 6  # 6 is max
 var message_prompt_list = []  # populated in _ready
 var message_saved_prompt_list = []  # copy of messages
 
@@ -27,6 +28,11 @@ onready var cover_list = [$StaticScreen/cover_0, $StaticScreen/cover_1, $StaticS
 onready var spawn_list = [$StaticScreen/panel_0_spawn, $StaticScreen/panel_1_spawn, $StaticScreen/panel_2_spawn, $StaticScreen/panel_3_spawn]
 onready var loadbar_list = [$StaticScreen/panel_0_spawn/loadbar_0, $StaticScreen/panel_1_spawn/loadbar_1, $StaticScreen/panel_2_spawn/loadbar_2, $StaticScreen/panel_3_spawn/loadbar_3]
 const LOAD_BAR_RIGHT_MARGIN = 70
+
+var start_message = "GOOD MORNING COMRADE.  CONGRATULATIONS ON FINISHING YOUR INITIAL QUALIFICATION. DON’T FORGET TO WRITE DOWN ALL RESULTS YOU COLLECT IN YOUR JOURNAL. THE AMERICANS HAVE BEEN QUIET LATELY SO DON’T EXPECT THAT MUCH ACTIVITY."
+var fail_message = "I FOUND SEVERAL ERRORS IN YOUR REPORT. TRY AGAIN."
+var pass_message = "GOOD JOB COMRADE. TAKE A QUICK BREAK AND I WILL TAKE OVER. SEE YOU SOON."
+
 
 #onready var report = 
 
@@ -38,7 +44,7 @@ func _ready():
 	
 	# Randomize messages
 
-#	message_options_list.shuffle()
+	message_options.shuffle()
 
 	for i in range(number_of_messages):
 		message_prompt_list.append(message_options[i] + ": " + str(randi()%5+1))
@@ -47,17 +53,26 @@ func _ready():
 	# add messages and answers to SubmitReport
 	$SubmitReport.message_prompt_list = message_saved_prompt_list
 #	$SubmitReport.message_answer_list = message_answer_list
+	
+	# start message
+	$speech.set('message_text', start_message)
+	$speech.set('playing', true)
+	
+	$ShiftTimer.wait_time = SHIFT_TIME
+	
 
 
 func _process(delta):
-	if Input.is_action_just_released("submit_report") and not $SubmitReport.visible:  # ENTER
-		$SubmitReport.visible = true
-		
-		$SpawnTimer.stop()
-		for cover in cover_list:
-			cover.visible = true
-		for game in active_games:
-			game.free()
+	if $ShiftTimer.time_left < (SHIFT_TIME-5) and not $speech.visible:
+		if Input.is_action_just_released("submit_report") and not $SubmitReport.visible:  # ENTER
+			$SubmitReport.visible = true
+			
+			$SpawnTimer.stop()
+			for cover in cover_list:
+				cover.visible = true
+			for game in active_games:
+				if game:
+					game.free()
 
 
 func _on_HeartBeat_timeout():
@@ -148,3 +163,30 @@ func _on_read_timer_timeout(game):
 		game.free()
 		if number_of_messages <= 0:
 			print("ALL MESSAGES RECEIVED")
+
+
+func _on_SubmitReport_submitted(correct_submission):
+	if correct_submission:
+		$SubmitReport.hide()
+		$speech.set('message_text', pass_message)
+		$speech/ColorRect/Label.percent_visible = 0
+		$speech.set('playing', true)
+	elif not correct_submission:
+		$SubmitReport.hide()
+		$speech.set('message_text', fail_message)
+		$speech/ColorRect/Label.percent_visible = 0
+		$speech.set('playing', true)
+
+
+func _on_speech_message_completed(message_played):
+	if message_played == start_message:
+		print("GREET_MESSAGE PLAYED")
+		$SpawnTimer.start()
+		$ShiftTimer.start()
+	elif message_played == fail_message:
+		print("FAIL_MESSAGE PLAYED")
+	elif message_played == pass_message:
+		print("PASS_MESSAGE PLAYED")
+
+func _on_ShiftTimer_timeout():
+	pass # Replace with function body.
