@@ -202,5 +202,5 @@ centered = false
 [connection signal="area_entered" from="reflector_right" to="reflector_right" method="_on_reflector_left_area_entered"]
 [connection signal="area_entered" from="Borders" to="Borders" method="_on_Borders_area_entered"]
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="area_entered" from="target" to="." method="_on_target_area_entered"]
 [connection signal="area_entered" from="target" to="target" method="_on_target_area_entered"]
+[connection signal="area_entered" from="target" to="." method="_on_target_area_entered"]

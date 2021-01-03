@@ -67,7 +67,7 @@ func _on_spawn_timer_timeout():
 	new_ball.direction = init_direction
 
 
-func _on_target_area_entered(area):
+func _on_target_area_entered(_area):
 	completed = true
 	$output_bar.set_bar(100)
 	$output_bar.set_bar_color("green")
