@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Main/Static Screen.png" type="Texture" id=1]
+[ext_resource path="res://Main/desk.png" type="Texture" id=1]
 [ext_resource path="res://Main/cover.png" type="Texture" id=2]
 [ext_resource path="res://Main/Meta.gd" type="Script" id=3]
 [ext_resource path="res://SubmitReport/SubmitReport.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Fonts/soviet_computer.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Main/message.gd" type="Script" id=6]
+[ext_resource path="res://Main/background.png" type="Texture" id=7]
+[ext_resource path="res://Main/supervisor.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "close_cover0"
@@ -22,7 +24,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "close_cover1"
 tracks/0/type = "value"
 tracks/0/path = NodePath("StaticScreen/cover_1:frame")
@@ -37,7 +39,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "close_cover2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("StaticScreen/cover_2:frame")
@@ -52,7 +54,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "close_cover3"
 tracks/0/type = "value"
 tracks/0/path = NodePath("StaticScreen/cover_3:frame")
@@ -67,8 +69,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 3, 4, 5, 6, 7, 7 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "open_cover0"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("StaticScreen/cover_0:frame")
 tracks/0/interp = 1
@@ -127,8 +128,53 @@ tracks/0/keys = {
 "values": [ 7, 6, 5, 4, 3, 2, 1, 0 ]
 }
 
+[sub_resource type="Animation" id=9]
+resource_name = "silhouette"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("supervisor:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "yelling"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("supervisor:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
 [node name="Base" type="Node2D"]
 script = ExtResource( 3 )
+
+[node name="background" type="Sprite" parent="."]
+z_index = -5
+texture = ExtResource( 7 )
+centered = false
+
+[node name="supervisor" type="Sprite" parent="."]
+position = Vector2( 297, 30 )
+z_index = -1
+texture = ExtResource( 8 )
+centered = false
+hframes = 3
+frame = 2
 
 [node name="StaticScreen" type="Sprite" parent="."]
 z_index = -1
@@ -141,9 +187,9 @@ z_as_relative = false
 
 [node name="loadbar_0" type="ColorRect" parent="StaticScreen/panel_0_spawn"]
 margin_left = 30.0
-margin_top = -25.0
+margin_top = -12.0
 margin_right = 70.0
-margin_bottom = -22.0
+margin_bottom = -9.0
 color = Color( 0.980392, 0.0156863, 0.0156863, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -155,9 +201,9 @@ z_as_relative = false
 
 [node name="loadbar_1" type="ColorRect" parent="StaticScreen/panel_1_spawn"]
 margin_left = 30.0
-margin_top = -25.0
+margin_top = -12.0
 margin_right = 70.0
-margin_bottom = -22.0
+margin_bottom = -9.0
 color = Color( 0.980392, 0.0156863, 0.0156863, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -169,9 +215,9 @@ z_as_relative = false
 
 [node name="loadbar_2" type="ColorRect" parent="StaticScreen/panel_2_spawn"]
 margin_left = 30.0
-margin_top = -25.0
+margin_top = -12.0
 margin_right = 70.0
-margin_bottom = -22.0
+margin_bottom = -9.0
 color = Color( 0.980392, 0.0156863, 0.0156863, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -183,9 +229,9 @@ z_as_relative = false
 
 [node name="loadbar_3" type="ColorRect" parent="StaticScreen/panel_3_spawn"]
 margin_left = 30.0
-margin_top = -25.0
+margin_top = -13.0
 margin_right = 70.0
-margin_bottom = -22.0
+margin_bottom = -10.0
 color = Color( 0.980392, 0.0156863, 0.0156863, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -193,7 +239,6 @@ __meta__ = {
 
 [node name="cover_0" type="Sprite" parent="StaticScreen"]
 position = Vector2( 0, 96 )
-z_index = 3
 texture = ExtResource( 2 )
 centered = false
 hframes = 8
@@ -201,7 +246,6 @@ frame = 7
 
 [node name="cover_1" type="Sprite" parent="StaticScreen"]
 position = Vector2( 120, 96 )
-z_index = 3
 texture = ExtResource( 2 )
 centered = false
 hframes = 8
@@ -209,7 +253,6 @@ frame = 7
 
 [node name="cover_2" type="Sprite" parent="StaticScreen"]
 position = Vector2( 242, 96 )
-z_index = 3
 texture = ExtResource( 2 )
 centered = false
 hframes = 8
@@ -217,7 +260,6 @@ frame = 7
 
 [node name="cover_3" type="Sprite" parent="StaticScreen"]
 position = Vector2( 363, 95 )
-z_index = 3
 texture = ExtResource( 2 )
 centered = false
 hframes = 8
@@ -270,13 +312,17 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/close_cover0 = SubResource( 1 )
-anims/close_cover1 = SubResource( 3 )
-anims/close_cover2 = SubResource( 4 )
-anims/close_cover3 = SubResource( 5 )
-anims/open_cover0 = SubResource( 2 )
+anims/close_cover1 = SubResource( 2 )
+anims/close_cover2 = SubResource( 3 )
+anims/close_cover3 = SubResource( 4 )
+anims/open_cover0 = SubResource( 5 )
 anims/open_cover1 = SubResource( 6 )
 anims/open_cover2 = SubResource( 7 )
 anims/open_cover3 = SubResource( 8 )
+
+[node name="AnimationPlayer_supervisor" type="AnimationPlayer" parent="."]
+anims/silhouette = SubResource( 9 )
+anims/yelling = SubResource( 10 )
 [connection signal="timeout" from="ShiftTimer" to="." method="_on_ShiftTimer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="HeartBeat" to="." method="_on_HeartBeat_timeout"]

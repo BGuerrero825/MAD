@@ -121,10 +121,10 @@ func _on_SpawnTimer_timeout():
 		# START TIMER TO COMPLETE MINIGAME, SEND GAME TO THAT JUST LIKE READ_TIMER
 		var new_read_timer = Timer.new()
 		new_read_timer.connect("timeout", self, "_countdown_timer", [new_game])
+		new_game.set('z_index', -1)
 		add_child(new_read_timer)
 		new_read_timer.set('wait_time', 5)
 		new_read_timer.start()
-		
 		spawn_list[panel_idx].add_child(new_game)
 #		cover_list[panel_idx].hide()
 		$AnimationPlayer.play("open_cover" + str(panel_idx))
