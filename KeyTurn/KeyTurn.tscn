@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://OutputBar/output_bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://KeyTurn/KeyTurn.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://FindSeq/panel.png" type="Texture" id=4]
 [ext_resource path="res://Fonts/soviet_font_12.tres" type="DynamicFont" id=5]
 [ext_resource path="res://KeyTurn/key_right.png" type="Texture" id=6]
+[ext_resource path="res://Sounds/sounds.tscn" type="PackedScene" id=7]
 [ext_resource path="res://KeyTurn/key_left.png" type="Texture" id=9]
 
 [node name="KeyTurn" type="Node2D"]
@@ -211,3 +212,5 @@ __meta__ = {
 
 [node name="output_bar" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3, 101 )
+
+[node name="sounds" parent="." instance=ExtResource( 7 )]

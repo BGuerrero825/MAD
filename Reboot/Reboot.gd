@@ -127,6 +127,7 @@ func _on_alert_timer_timeout():
 		$output_bar.set_bar_color("green")
 		$output_bar.set_message(message)
 		completed = true
+		$sounds/completed_beep.play()
 		$ui/monitor_text.text = "SYSTEM SUCCESSFULLY REBOOTED. GOOD JOB."
 		$ui/monitor_text.percent_visible = 1
 	else:

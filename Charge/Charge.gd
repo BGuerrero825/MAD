@@ -21,6 +21,8 @@ func _ready():
 	bars[goal_charge].visible = true
 
 func _process(delta):
+	if Input.is_action_just_pressed(key):
+		$sounds/click_in.play()
 	# charge if key pressed
 	if Input.is_action_pressed(key):
 		# button animation
@@ -34,9 +36,9 @@ func _process(delta):
 	
 	if Input.is_action_just_released(key):
 		current_charge = ceil(current_charge)
-#		print(current_charge)
 		# button animation
 		get_node("button").frame = 0
+		$sounds/click_out.play()
 		if current_charge > 22:
 			current_charge = 22 
 		# show charge amount on release
@@ -54,6 +56,7 @@ func _process(delta):
 			$output_bar.set_bar_color("green")
 			$output_bar.set_message(message)
 			$mid_beeps.play()
+			$sounds/completed_beep.play()
 		# reset current charge on release
 		current_charge = 0
 

@@ -68,11 +68,12 @@ func _on_spawn_timer_timeout():
 
 
 func _on_target_area_entered(_area):
-	completed = true
-	$output_bar.set_bar(100)
-	$output_bar.set_bar_color("green")
-	$output_bar.set_message(message)
-
+	if not completed:
+		completed = true
+		$output_bar.set_bar(100)
+		$output_bar.set_bar_color("green")
+		$output_bar.set_message(message)
+		$sounds/completed_beep.play()
 
 func assign_input():
 	match panel_location:

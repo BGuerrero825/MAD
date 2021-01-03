@@ -90,16 +90,19 @@ func _process(delta):
 		progress = 0
 		downloading = true
 	elif downloading:
-		$output_bar.set_bar_color("orange")
+		if not completed:
+			$output_bar.set_bar_color("orange")
 		progress += 1 * progress_mult
 		if ceil(progress) <= 100:
 			$output_bar.set_bar(ceil(progress))
 		else:
 			if (solution_phase == player_phase) and (solution_freq == player_freq):
-				completed = true
-				$output_bar.set_bar(100)
-				$output_bar.set_bar_color("green")
-				$output_bar/output_message.text = message
+				if not completed:
+					completed = true
+					$output_bar.set_bar(100)
+					$output_bar.set_bar_color("green")
+					$output_bar/output_message.text = message
+					$sounds/completed_beep.play()
 			else:
 				$output_bar/output_message.text = "Bad Signal"
 				$output_bar.set_bar_color("red")

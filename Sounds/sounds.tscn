@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Sounds/fuji_click1.wav" type="AudioStream" id=1]
 [ext_resource path="res://Sounds/fuji_click2.wav" type="AudioStream" id=2]
 [ext_resource path="res://Sounds/fuji_click.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/tune_sound2.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/tune_sound1.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/single_beep.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/completed_beep.wav" type="AudioStream" id=7]
 
 [node name="sounds" type="Node2D"]
 
@@ -27,3 +29,9 @@ volume_db = -5.0
 [node name="radio_adjust2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -5.0
+
+[node name="single_beep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="completed_beep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )

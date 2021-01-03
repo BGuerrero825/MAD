@@ -23,8 +23,14 @@ func _ready():
 
 func _process(delta):
 	for i in range(3):
-			# button press animation
-			light[i].get_node("button").frame = 1 if Input.is_action_pressed(key[i]) else 0
+		# button press animation
+		# button press sounds
+		if Input.is_action_just_pressed(key[i]):
+			light[i].get_node("button").frame = 1
+			$sounds/click_in.play()
+		if Input.is_action_just_released(key[i]):
+			$sounds/click_out.play()
+			light[i].get_node("button").frame = 0
 	if reset_timer > 0:
 		if reset_timer == 1:
 			setup_problem()
@@ -53,6 +59,7 @@ func _process(delta):
 							$output_bar.set_bar(100)
 							$output_bar.set_bar_color("green")
 							$output_bar.set_message(message)
+							$sounds/completed_beep.play()
 						$happy_beep.play()
 				#if not part of solution, reset
 				else:

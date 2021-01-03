@@ -40,10 +40,12 @@ func _process(delta):
 		button_logic(key_6, 6)
 	#flash buttons when sequence complete and update bar
 	else:
-		completed = true
-		$output_bar.set_bar(100)
-		$output_bar.set_bar_color("green")
-		$output_bar.set_message(message)
+		if not completed:
+			completed = true
+			$output_bar.set_bar(100)
+			$output_bar.set_bar_color("green")
+			$output_bar.set_message(message)
+			$sounds/completed_beep.play()
 		flash += 1
 		for light in lights:
 			light.get_node("button").frame = 0
@@ -58,6 +60,7 @@ func _process(delta):
 func button_logic(key, num):
 		# check for correct seq on initial press
 	if Input.is_action_just_pressed(key):
+		$sounds/click_in.play()
 		# if correct button for position in sequence, light green and progess seq
 		if num == sequence[seq_pos]:
 			lights[num - 1].frame = 2
@@ -80,6 +83,8 @@ func button_logic(key, num):
 		lights[num - 1].get_node("button").frame = 0
 		if lights[num - 1].frame != 2:
 			lights[num - 1].frame = 0
+	if Input.is_action_just_released(key):
+		$sounds/click_out.play()
 	
 func assign_input():
 	match panel_location:

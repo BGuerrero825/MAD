@@ -34,6 +34,7 @@ func _process(delta):
 			gauge_decay[i] += 1
 		# if key pressed reset decay
 		if Input.is_action_just_pressed(key[i]):
+			$sounds/click_in.play()
 			gauge_decay[i] = 0
 			# button press
 			gauge[i].get_node("button").frame = 1
@@ -59,6 +60,7 @@ func _process(delta):
 			$output_bar.set_bar(100)
 			$output_bar.set_bar_color("green")
 			$output_bar.set_message(message)
+			$sounds/completed_beep.play()
 	
 func update_gauge(num, val, light):
 	var color = 1 

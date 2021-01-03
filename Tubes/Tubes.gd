@@ -127,6 +127,7 @@ func ball_reached_end():
 		$electric_move_timer.stop()
 		progress = 100
 		completed = true
+		$sounds/completed_beep.play()
 		$output_bar.set_bar(progress)
 		$output_bar.set_bar_color("green")
 		$output_bar.set_message(message)

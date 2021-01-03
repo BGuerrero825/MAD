@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Binary/button.png" type="Texture" id=1]
 [ext_resource path="res://Binary/panel_detailed.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://OutputBar/output_bar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Binary/Binary.gd" type="Script" id=7]
 [ext_resource path="res://Binary/lights.png" type="Texture" id=8]
+[ext_resource path="res://Sounds/sounds.tscn" type="PackedScene" id=9]
 
 [node name="Guages" type="Node2D"]
 script = ExtResource( 7 )
@@ -147,3 +148,5 @@ stream = ExtResource( 4 )
 
 [node name="happy_beep" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+
+[node name="sounds" parent="." instance=ExtResource( 9 )]

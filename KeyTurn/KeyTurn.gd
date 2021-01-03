@@ -23,9 +23,11 @@ func _process(delta):
 		if Input.is_action_just_pressed(key[i]):
 			lock[i].frame = 1
 			lock_state[i] = 1
+			$sounds/click_in.play()
 		if Input.is_action_just_released(key[i]):
 			lock[i].frame = 0
 			lock_state[i] = 0
+			$sounds/click_out.play()
 	#add progress if key turns matches the solution
 	if lock_state == solution and not completed:
 		progress += 1
@@ -35,15 +37,18 @@ func _process(delta):
 		randomize_solution()
 		progress += 1
 	#when game completed set progress to 100 and stop updating
-	if progress > 990:
+	if progress > 990 and not completed:
 		completed = true
 		$output_bar.set_bar(100)
 		$output_bar.set_bar_color("green")
 		$output_bar.set_message(message)
+		$sounds/completed_beep.play()
+		
 
 func randomize_solution():
 	randomize()
 	solution.shuffle()
+	$sounds/single_beep.play()
 	for i in range(8):
 		if solution[i] == 1:
 			lock[i].get_node("light").frame = 1
@@ -60,7 +65,7 @@ func assign_input():
 			key[3] = 'W'
 			key[4] = 'A'
 			key[5] = 'S'
-			key[6] = 'D'
+			key[6] = 'Z'
 			key[7] = 'X'
 		1:
 			key[0] = '4'
