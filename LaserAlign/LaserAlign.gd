@@ -1,8 +1,9 @@
 extends Node2D
 
-export var message := "STAT: 3"
+export var message := "NULL"
 export var completed := false
 export var panel_location := 0
+export var game_timer := 20
 
 const TUBE_WIDTH = 6
 const COLOR_ORANGE = Color('fb9d28')

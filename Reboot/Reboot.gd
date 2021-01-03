@@ -1,8 +1,9 @@
 extends Node2D
 
-export var message := "NUM: 1"
+export var message := "NULL"
 export var completed := false
 export var panel_location := 0
+export var game_timer := 45
 
 export var download_speed := 1
 

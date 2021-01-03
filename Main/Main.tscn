@@ -16,17 +16,57 @@ centered = false
 position = Vector2( 10, 112 )
 z_as_relative = false
 
+[node name="loadbar_0" type="ColorRect" parent="StaticScreen/panel_0_spawn"]
+margin_left = 30.0
+margin_top = -25.0
+margin_right = 70.0
+margin_bottom = -22.0
+color = Color( 0.980392, 0.0156863, 0.0156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="panel_1_spawn" type="Position2D" parent="StaticScreen"]
 position = Vector2( 131, 112 )
 z_as_relative = false
+
+[node name="loadbar_1" type="ColorRect" parent="StaticScreen/panel_1_spawn"]
+margin_left = 30.0
+margin_top = -25.0
+margin_right = 70.0
+margin_bottom = -22.0
+color = Color( 0.980392, 0.0156863, 0.0156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="panel_2_spawn" type="Position2D" parent="StaticScreen"]
 position = Vector2( 253, 112 )
 z_as_relative = false
 
+[node name="loadbar_2" type="ColorRect" parent="StaticScreen/panel_2_spawn"]
+margin_left = 30.0
+margin_top = -25.0
+margin_right = 70.0
+margin_bottom = -22.0
+color = Color( 0.980392, 0.0156863, 0.0156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="panel_3_spawn" type="Position2D" parent="StaticScreen"]
 position = Vector2( 374, 112 )
 z_as_relative = false
+
+[node name="loadbar_3" type="ColorRect" parent="StaticScreen/panel_3_spawn"]
+margin_left = 30.0
+margin_top = -25.0
+margin_right = 70.0
+margin_bottom = -22.0
+color = Color( 0.980392, 0.0156863, 0.0156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="cover_0" type="Sprite" parent="StaticScreen"]
 position = Vector2( 58, 168 )

@@ -17,7 +17,6 @@ onready var reboot = load("res://Reboot/Reboot.tscn")
 onready var tubes = load("res://Tubes/Tubes.tscn")
 
 onready var game_list = [binary, charge, dialTune, findSeq, gauges, laserAlign, reboot, tubes, keyTurn]
-var game_timer_list =   [40,     25,     30,       25,      30,     25,         45,     45,    30]
 
 var message_options = ['FREQ', 'SAT', 'CODE', 'SER', 'ORD', 'MSG', 'SIGN', 'STAT', 'GEO', 'POS', 'TRAJ', 'KEY', 'RES', 'SPD']
 var number_of_messages = 5
@@ -26,6 +25,8 @@ var message_saved_prompt_list = []  # copy of messages
 
 onready var cover_list = [$StaticScreen/cover_0, $StaticScreen/cover_1, $StaticScreen/cover_2, $StaticScreen/cover_3]
 onready var spawn_list = [$StaticScreen/panel_0_spawn, $StaticScreen/panel_1_spawn, $StaticScreen/panel_2_spawn, $StaticScreen/panel_3_spawn]
+onready var loadbar_list = [$StaticScreen/panel_0_spawn/loadbar_0, $StaticScreen/panel_1_spawn/loadbar_1, $StaticScreen/panel_2_spawn/loadbar_2, $StaticScreen/panel_3_spawn/loadbar_3]
+const LOAD_BAR_RIGHT_MARGIN = 70
 
 func _ready():
 	randomize()
@@ -85,22 +86,37 @@ func _on_SpawnTimer_timeout():
 		var new_read_timer = Timer.new()
 		new_read_timer.connect("timeout", self, "_countdown_timer", [new_game])
 		add_child(new_read_timer)
-		new_read_timer.set('wait_time', game_timer_list[new_game_idx])
+		new_read_timer.set('wait_time', 5)
 		new_read_timer.start()
 		
 		spawn_list[panel_idx].add_child(new_game)
 		cover_list[panel_idx].hide()
+		
+		loadbar_list[new_game.panel_location].margin_right = 30
 		
 		active_games.append(new_game)
 
 
 func _countdown_timer(game):
 	if game:
-		panels_game_type[game.panel_location] = -1
-		cover_list[game.panel_location].show()
-		message_prompt_list.append(game.message)
+		game.game_timer -= 5
+		print("GAME_TIMER: ", game.game_timer)
 		
-		game.free()
+		# update loadbar width
+#		var new_loadbard_width = min(70, 30 + (40 - game.game_timer/(LOAD_BAR_RIGHT_MARGIN-30) ))
+		var new_loadbar_width = 30 + 40*(1 - (float(game.game_timer) / 30))
+#		$StaticScreen/panel_0_spawn/loadbar_0.margin_right = game.game_timer / LOAD_BAR_RIGHT_MARGIN
+#		$StaticScreen/panel_0_spawn/loadbar_0.margin_right = new_loadbard_width
+		loadbar_list[game.panel_location].margin_right = new_loadbar_width
+		print("WIDTH: ", new_loadbar_width)
+		
+		if game.game_timer <= 0:
+			panels_game_type[game.panel_location] = -1
+			cover_list[game.panel_location].show()
+			message_prompt_list.append(game.message)
+			
+			game.free()
+
 
 func _on_read_timer_timeout(game):
 #	print("READ_TIMER")

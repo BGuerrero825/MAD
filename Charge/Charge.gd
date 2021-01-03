@@ -1,8 +1,9 @@
 extends Node2D
 
-export var message := "POW: 4"
+export var message := "NULL"
 export var completed := false
 export var panel_location := 0  # panel location 0-3
+export var game_timer := 25
 
 var current_charge := 0.0
 var goal_charge := 0
