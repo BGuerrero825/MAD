@@ -77,25 +77,25 @@ func _on_target_area_entered(area):
 func assign_input():
 	match panel_location:
 		0:
-			key_left_up = 'a'
-			key_left_down = 'z'
-			key_right_up = 's'
-			key_right_down = 'x'
+			key_left_up = 'A'
+			key_left_down = 'Z'
+			key_right_up = 'S'
+			key_right_down = 'X'
 		1:
-			key_left_up = 'e'
-			key_left_down = 'd'
-			key_right_up = 'r'
-			key_right_down = 'f'
+			key_left_up = 'E'
+			key_left_down = 'D'
+			key_right_up = 'R'
+			key_right_down = 'F'
 		2:
-			key_left_up = 'g'
-			key_left_down = 'b'
-			key_right_up = 'h'
-			key_right_down = 'n'
+			key_left_up = 'G'
+			key_left_down = 'B'
+			key_right_up = 'H'
+			key_right_down = 'N'
 		3:
-			key_left_up = 'i'
-			key_left_down = 'k'
-			key_right_up = 'o'
-			key_right_down = 'l'
+			key_left_up = 'I'
+			key_left_down = 'K'
+			key_right_up = 'O'
+			key_right_down = 'L'
 	
 	# Update key_list
 	key_list = [key_left_up, key_left_down, key_right_up, key_right_down]

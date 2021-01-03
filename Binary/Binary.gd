@@ -106,21 +106,21 @@ func setup_problem():
 func assign_input():
 	match panel_location:
 		0:
-			key[0] = 'q'
-			key[1] = 'w'
-			key[2] = 's'
+			key[0] = 'Q'
+			key[1] = 'W'
+			key[2] = 'S'
 		1:
-			key[0] = 'e'
-			key[1] = 'r'
-			key[2] = 't'
+			key[0] = 'E'
+			key[1] = 'R'
+			key[2] = 'T'
 		2:
-			key[0] = 'g'
-			key[1] = 'y'
-			key[2] = 'u'
+			key[0] = 'G'
+			key[1] = 'Y'
+			key[2] = 'U'
 		3:
-			key[0] = 'i'
-			key[1] = 'o'
-			key[2] = 'p'
+			key[0] = 'I'
+			key[1] = 'O'
+			key[2] = 'P'
 
 	$row_0/light_4/button_label.text = key[2]
 	$row_0/light_2/button_label.text = key[1]

@@ -126,17 +126,17 @@ func _on_alert_timer_timeout():
 func assign_input():
 	match panel_location:
 		0:
-			key_yes = 'z'
-			key_no = 'x'
+			key_yes = 'Z'
+			key_no = 'X'
 		1:
-			key_yes = 'e'
-			key_no = 't'
+			key_yes = 'E'
+			key_no = 'Y'
 		2:
-			key_yes = 'g'
-			key_no = 'h'
+			key_yes = 'G'
+			key_no = 'H'
 		3:
-			key_yes = 'k'
-			key_no = 'l'
+			key_yes = 'K'
+			key_no = 'L'
 	
 	# Update key_list
 	key_list = [key_yes, key_no]

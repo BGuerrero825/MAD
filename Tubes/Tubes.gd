@@ -242,17 +242,17 @@ func assign_input():
 			key2 = '2'
 			key3 = '3'
 		1:
-			key1 = 'e'
-			key2 = 'r'
-			key3 = 't'
+			key1 = 'E'
+			key2 = 'R'
+			key3 = 'T'
 		2:
 			key1 = '6'
 			key2 = '7'
 			key3 = '8'
 		3:
-			key1 = 'j'
-			key2 = 'k'
-			key3 = 'l'
+			key1 = 'J'
+			key2 = 'K'
+			key3 = 'L'
 	
 	# Update key_list
 	key_list = [key1, key2, key3]

@@ -60,12 +60,12 @@ func _process(delta):
 func assign_input():
 	match panel_location:
 		0:
-			key = 's'
+			key = 'S'
 		1:
-			key = 'f'
+			key = 'F'
 		2:
-			key = 'h'
+			key = 'G'
 		3:
-			key = 'k'
+			key = 'K'
 
 	$button/button_label.text = key

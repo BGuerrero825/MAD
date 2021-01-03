@@ -148,27 +148,27 @@ func assign_input():
 		0:
 			key_dial_a_left = '1'
 			key_dial_a_right = '2'
-			key_dial_b_left = 'a'
-			key_dial_b_right = 's'
-			key_download = 'z'
+			key_dial_b_left = 'A'
+			key_dial_b_right = 'S'
+			key_download = 'Z'
 		1:
 			key_dial_a_left = '4'
 			key_dial_a_right = '5'
-			key_dial_b_left = 'd'
-			key_dial_b_right = 'f'
-			key_download = 'c'
+			key_dial_b_left = 'D'
+			key_dial_b_right = 'F'
+			key_download = 'C'
 		2:
 			key_dial_a_left = '6'
 			key_dial_a_right = '7'
-			key_dial_b_left = 'g'
-			key_dial_b_right = 'h'
-			key_download = 'b'
+			key_dial_b_left = 'G'
+			key_dial_b_right = 'H'
+			key_download = 'B'
 		3:
 			key_dial_a_left = '9'
 			key_dial_a_right = '0'
-			key_dial_b_left = 'k'
-			key_dial_b_right = 'l'
-			key_download = 'm'
+			key_dial_b_left = 'K'
+			key_dial_b_right = 'L'
+			key_download = 'M'
 	
 	# Update panel key indicators
 	$dial_a_left.text = key_dial_a_left

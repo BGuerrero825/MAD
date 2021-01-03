@@ -78,17 +78,17 @@ func assign_input():
 			key[1] = '2'
 			key[2] = '3'
 		1:
-			key[0] = 'e'
-			key[1] = 'r'
-			key[2] = 't'
+			key[0] = 'E'
+			key[1] = 'R'
+			key[2] = 'T'
 		2:
 			key[0] = '6'
 			key[1] = '7'
 			key[2] = '8'
 		3:
-			key[0] = 'i'
-			key[1] = 'o'
-			key[2] = 'p'
+			key[0] = 'I'
+			key[1] = 'O'
+			key[2] = 'P'
 
 	$gauge_0/button_label.text = key[0]
 	$gauge_1/button_label.text = key[1]

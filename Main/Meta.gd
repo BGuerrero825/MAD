@@ -28,6 +28,8 @@ onready var spawn_list = [$StaticScreen/panel_0_spawn, $StaticScreen/panel_1_spa
 onready var loadbar_list = [$StaticScreen/panel_0_spawn/loadbar_0, $StaticScreen/panel_1_spawn/loadbar_1, $StaticScreen/panel_2_spawn/loadbar_2, $StaticScreen/panel_3_spawn/loadbar_3]
 const LOAD_BAR_RIGHT_MARGIN = 70
 
+#onready var report = 
+
 func _ready():
 	randomize()
 	#spawn a random game in a random location at the start
@@ -35,10 +37,22 @@ func _ready():
 		cover.show()
 	
 	# Randomize messages
+
 #	message_options_list.shuffle()
+
 	for i in range(number_of_messages):
 		message_prompt_list.append(message_options[i] + ": " + str(randi()%5+1))
 	message_saved_prompt_list = message_prompt_list.duplicate()
+	
+	# add messages and answers to SubmitReport
+	$SubmitReport.message_prompt_list = message_saved_prompt_list
+#	$SubmitReport.message_answer_list = message_answer_list
+
+
+func _process(delta):
+	if Input.is_action_just_released("submit_report") and not $SubmitReport.visible:  # ENTER
+		$SubmitReport.visible = true
+		print("BEGIN INPUTTING CODES")
 
 
 func _on_HeartBeat_timeout():
@@ -80,7 +94,7 @@ func _on_SpawnTimer_timeout():
 		new_game.set('panel_location', panel_idx)
 		#var new_msg = message_prompt_list.pop + " " + message_answer_list
 		new_game.set('message', message_prompt_list.pop_back())
-		print(message_prompt_list)
+#		print(message_prompt_list)
 		
 		# START TIMER TO COMPLETE MINIGAME, SEND GAME TO THAT JUST LIKE READ_TIMER
 		var new_read_timer = Timer.new()
@@ -100,17 +114,15 @@ func _on_SpawnTimer_timeout():
 func _countdown_timer(game):
 	if game:
 		game.game_timer -= 5
-		print("GAME_TIMER: ", game.game_timer)
+#		print("GAME_TIMER: ", game.game_timer)
 		
 		# update loadbar width
-#		var new_loadbard_width = min(70, 30 + (40 - game.game_timer/(LOAD_BAR_RIGHT_MARGIN-30) ))
-		var new_loadbar_width = 30 + 40*(1 - (float(game.game_timer) / 30))
-#		$StaticScreen/panel_0_spawn/loadbar_0.margin_right = game.game_timer / LOAD_BAR_RIGHT_MARGIN
-#		$StaticScreen/panel_0_spawn/loadbar_0.margin_right = new_loadbard_width
+		var new_loadbar_width = 30 + 40*(1 - (float(game.game_timer) / 35))
 		loadbar_list[game.panel_location].margin_right = new_loadbar_width
-		print("WIDTH: ", new_loadbar_width)
+#		print("WIDTH: ", new_loadbar_width)
 		
 		if game.game_timer <= 0:
+			loadbar_list[game.panel_location].margin_right = 70
 			panels_game_type[game.panel_location] = -1
 			cover_list[game.panel_location].show()
 			message_prompt_list.append(game.message)
@@ -126,6 +138,7 @@ func _on_read_timer_timeout(game):
 		#print("PANEL:", game.panel_location)
 		number_of_messages -= 1
 		panels_game_type[game.panel_location] = -1
+		loadbar_list[game.panel_location].margin_right = 70
 		cover_list[game.panel_location].show()
 		game.free()
 		if number_of_messages <= 0:
