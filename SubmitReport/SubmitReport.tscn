@@ -1,65 +1,163 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://SubmitReport/SubmitReport.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/soviet_font_12.tres" type="DynamicFont" id=2]
-[ext_resource path="res://SubmitReport/arrow.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/soviet_paper_12.tres" type="DynamicFont" id=3]
 
 [node name="SubmitReport" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 249.0
-margin_bottom = 245.0
-color = Color( 0.384314, 0.372549, 0.372549, 1 )
+[node name="paper" type="ColorRect" parent="."]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 199.0
+margin_bottom = 249.0
+color = Color( 0.870588, 0.835294, 0.733333, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="prompts" type="Label" parent="ColorRect"]
-margin_left = 50.3968
-margin_top = 36.2227
-margin_right = 90.3968
-margin_bottom = 67.2227
-custom_fonts/font = ExtResource( 2 )
-text = "test
-test"
+[node name="p0" type="Label" parent="paper"]
+margin_left = 38.149
+margin_top = 28.6187
+margin_right = 125.149
+margin_bottom = 42.6187
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "TEST"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="answers" type="Label" parent="ColorRect"]
-margin_left = 148.671
-margin_top = 37.1677
-margin_right = 188.671
-margin_bottom = 68.1677
-custom_fonts/font = ExtResource( 2 )
-text = "1
-2"
+[node name="p1" type="Label" parent="paper"]
+margin_left = 38.274
+margin_top = 42.6187
+margin_right = 125.274
+margin_bottom = 56.6187
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="indicator_origin" type="Position2D" parent="ColorRect"]
-position = Vector2( 31, 43 )
+[node name="p2" type="Label" parent="paper"]
+margin_left = 38.274
+margin_top = 56.6187
+margin_right = 125.274
+margin_bottom = 70.6187
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="offset" type="Position2D" parent="ColorRect/indicator_origin"]
+[node name="p3" type="Label" parent="paper"]
+margin_left = 38.274
+margin_top = 70.6187
+margin_right = 125.274
+margin_bottom = 84.6187
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="arrow" type="Sprite" parent="ColorRect/indicator_origin/offset"]
-position = Vector2( 0, -5 )
-texture = ExtResource( 3 )
-centered = false
+[node name="p4" type="Label" parent="paper"]
+margin_left = 38.274
+margin_top = 84.6187
+margin_right = 125.274
+margin_bottom = 98.6187
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="arrow2" type="Sprite" parent="ColorRect/indicator_origin/offset"]
-position = Vector2( 132, -5 )
-texture = ExtResource( 3 )
-centered = false
-flip_h = true
+[node name="p5" type="Label" parent="paper"]
+margin_left = 38.274
+margin_top = 98.6187
+margin_right = 125.274
+margin_bottom = 112.619
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ColorRect" type="ColorRect" parent="ColorRect/indicator_origin/offset/arrow2"]
-margin_left = -144.0
-margin_top = 7.0
-margin_right = 38.0
-margin_bottom = 55.0
+[node name="a0" type="Label" parent="paper"]
+margin_left = 143.274
+margin_top = 28.6187
+margin_right = 162.274
+margin_bottom = 42.6187
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="a1" type="Label" parent="paper"]
+margin_left = 143.274
+margin_top = 42.6187
+margin_right = 162.274
+margin_bottom = 56.6187
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="a2" type="Label" parent="paper"]
+margin_left = 143.274
+margin_top = 56.6187
+margin_right = 162.274
+margin_bottom = 70.6187
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="a3" type="Label" parent="paper"]
+margin_left = 143.274
+margin_top = 70.6187
+margin_right = 162.274
+margin_bottom = 84.6187
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="a4" type="Label" parent="paper"]
+margin_left = 143.274
+margin_top = 84.6187
+margin_right = 162.274
+margin_bottom = 98.6187
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="a5" type="Label" parent="paper"]
+margin_left = 143.274
+margin_top = 98.6187
+margin_right = 162.274
+margin_bottom = 112.619
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="submit_report" type="Label" parent="paper"]
+margin_left = 45.274
+margin_top = 205.619
+margin_right = 150.274
+margin_bottom = 219.619
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "SUBMIT REPORT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
