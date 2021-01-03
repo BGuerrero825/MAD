@@ -5,7 +5,7 @@
 [ext_resource path="res://LaserAlign/reflector_sprite.png" type="Texture" id=3]
 [ext_resource path="res://Fonts/soviet_font_12.tres" type="DynamicFont" id=4]
 [ext_resource path="res://LaserAlign/up_down_arrow.png" type="Texture" id=5]
-[ext_resource path="res://output_bar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://OutputBar/output_bar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://LaserAlign/target.png" type="Texture" id=7]
 [ext_resource path="res://LaserAlign/reflector_left.gd" type="Script" id=8]
 [ext_resource path="res://LaserAlign/Borders.gd" type="Script" id=9]
@@ -204,5 +204,3 @@ centered = false
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="area_entered" from="target" to="." method="_on_target_area_entered"]
 [connection signal="area_entered" from="target" to="target" method="_on_target_area_entered"]
-
-[editable path="output_bar"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://output_bar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://OutputBar/output_bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://KeyTurn/KeyTurn.gd" type="Script" id=2]
 [ext_resource path="res://KeyTurn/light.png" type="Texture" id=3]
 [ext_resource path="res://FindSeq/panel.png" type="Texture" id=4]
@@ -211,11 +211,3 @@ __meta__ = {
 
 [node name="output_bar" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3, 101 )
-
-[node name="load_bar" parent="output_bar" index="0"]
-margin_right = 2.0
-
-[node name="output_message" parent="output_bar" index="1"]
-visible = false
-
-[editable path="output_bar"]

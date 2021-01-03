@@ -1,6 +1,9 @@
 extends Node2D
 
+export var message := "NUM: 5"
+export var completed := false
 export var panel_location := 0
+
 export var electric_move_time := 0.2  # assign in _ready()
 
 enum {HORZ=0, VERT=1, RED_HORZ=2, RED_VERT=3, GRN_HORZ=4, 
@@ -15,6 +18,8 @@ const DARK_GRAY = Color('595652')
 var key1 = '-'
 var key2 = '-'
 var key3 = '-'
+
+var progress := 0
 
 var key_list = []  # populated in assign_input()
 onready var key_label_list = [$mx_frame_overlay/key1, $mx_frame_overlay/key2, $mx_frame_overlay/key3]
@@ -109,16 +114,23 @@ func ball_reached_end():
 	
 	completion += 1
 	completion_lights[completion-1].color = COLOR_GREEN
-	$mx_frame_overlay/message/ColorRect.color = COLOR_ORANGE
-	$mx_frame_overlay/message.text = "Some Sig."
+	#update progress bar according to current progress
+	if progress == 0:
+		progress = 34
+		$output_bar.set_bar(progress)
+	elif progress > 0:
+		progress = 67
+		$output_bar.set_bar(progress)
 	
 	if completion >= 3:
 		$electric_move_timer.stop()
-		$mx_frame_overlay/message/ColorRect.color = COLOR_GREEN
-		$mx_frame_overlay/message.text = "Good Sig."
+		progress = 100
+		completed = true
+		$output_bar.set_bar(progress)
+		$output_bar.set_bar_color("green")
+		$output_bar.set_message(message)
 		# signal completion
 	
-
 
 func get_next_dir(dir : Vector2, tube_type : int):
 	match tube_type:

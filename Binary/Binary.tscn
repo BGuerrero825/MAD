@@ -5,7 +5,7 @@
 [ext_resource path="res://Sounds/Happy beep.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/Error beep.wav" type="AudioStream" id=4]
 [ext_resource path="res://Fonts/soviet_font_12.tres" type="DynamicFont" id=5]
-[ext_resource path="res://output_bar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://OutputBar/output_bar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Binary/Binary.gd" type="Script" id=7]
 [ext_resource path="res://Binary/lights.png" type="Texture" id=8]
 
@@ -18,12 +18,6 @@ centered = false
 
 [node name="output_bar" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3, 101 )
-
-[node name="load_bar" parent="output_bar" index="0"]
-margin_right = 2.0
-
-[node name="output_message" parent="output_bar" index="1"]
-visible = false
 
 [node name="row_0" type="Node2D" parent="."]
 position = Vector2( 32, 20 )
@@ -153,5 +147,3 @@ stream = ExtResource( 4 )
 
 [node name="happy_beep" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-
-[editable path="output_bar"]

@@ -1,8 +1,8 @@
 extends Node2D
 
-export var message := "80% CLOUDY"
+export var message := "FREQ: 4"
+export var completed := false
 export var panel_location := 0  # panel location 0-3
-export var download_speed := 24
 
 const COLOR_ORANGE = Color('fb9d28')
 const COLOR_GREEN = Color('6abe30')
@@ -22,7 +22,9 @@ var key_dial_b_left := '-'
 var key_dial_b_right := '-'
 var key_download := '-'
 
-var downloading = false
+var downloading := false
+var progress := 0.0
+var progress_mult := 0.4
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -84,22 +86,24 @@ func _process(delta):
 		$output_bar/output_message.text = ""
 		
 		# Check if player phase and freq match solution
-		$output_bar/load_bar.rect_size.x = 1
+		progress = 0
 		downloading = true
 	elif downloading:
-		
-		$output_bar/load_bar.color = COLOR_ORANGE
-		
-		if $output_bar/load_bar.rect_size.x < 87:
-			$output_bar/load_bar.rect_size.x += download_speed * delta # grow bar
+		$output_bar.set_bar_color("orange")
+		progress += 1 * progress_mult
+		if ceil(progress) <= 100:
+			$output_bar.set_bar(ceil(progress))
 		else:
 			if (solution_phase == player_phase) and (solution_freq == player_freq):
+				completed = true
+				$output_bar.set_bar(100)
+				$output_bar.set_bar_color("green")
 				$output_bar/output_message.text = message
-				$output_bar/load_bar.color = COLOR_GREEN
 			else:
 				$output_bar/output_message.text = "Bad Signal"
-				$output_bar/load_bar.color = COLOR_RED
+				$output_bar.set_bar_color("red")
 				downloading = false
+				progress = 0
 	
 	
 	# Button Animation and Sounds
@@ -137,8 +141,7 @@ func _process(delta):
 	elif Input.is_action_just_released(key_download):
 		$download_prompt.add_color_override("font_color", COLOR_ORANGE)
 		$sounds/click_out.play()
-
-
+	
 func assign_input():
 	match panel_location:
 		0:

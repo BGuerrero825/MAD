@@ -1,6 +1,9 @@
 extends Node2D
 
+export var message := "NUM: 1"
+export var completed := false
 export var panel_location := 0
+
 export var download_speed := 1
 
 const COLOR_ORANGE = Color('fb9d28')
@@ -21,7 +24,6 @@ var console_list := [ [true, "24952 CORRUPTED FILES DETECTED. PLEASE REBOOT THE 
 var console_idx := 0
 var console_loading := false
 
-var tasks_complete := false
 var console_alert := false
 
 var current_input := false
@@ -52,7 +54,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if not tasks_complete and not console_loading and not console_alert:
+	if not completed and not console_loading and not console_alert:
 		# Draw main display message challenge
 		#$ui/monitor_text.text = console_list[console_idx][1]
 		if $ui/monitor_text.percent_visible < 1.0:
@@ -77,7 +79,7 @@ func _process(delta):
 		if $ui/load_text.percent_visible >= 0.99 or $ui/load_text.percent_visible <= 0.01:
 			download_speed *= -1
 	
-	elif tasks_complete:
+	elif completed:
 		pass
 	
 	# Color keys on presses, sound, and animate sprites
@@ -113,7 +115,7 @@ func _on_alert_timer_timeout():
 	console_alert = false
 	$ui/monitor_text.percent_visible = 0
 	if console_idx >= len(console_list):
-		tasks_complete = true
+		completed = true
 		$ui/monitor_text.text = "SYSTEM SUCCESSFULLY REBOOTED. GOOD JOB."
 		$ui/monitor_text.percent_visible = 1
 	else:

@@ -1,12 +1,13 @@
 extends Node2D
 
+export var message := "SER: 1"
+export var completed := false
 export var panel_location := 0  # panel location 0-3
 
 var gauge_val := [0.0,0.0,0.0]
 var gauge_decay := [0,0,0]
 var gauge_light := []
 var correct := [0,0,0]
-var completed := false
 var held_time := 0
 # Inputs
 var key = ['-','-','-']
@@ -50,10 +51,13 @@ func _process(delta):
 	#check win condition
 	if not completed and (floor(gauge_val[0]) == correct[0] and floor(gauge_val[1]) == correct[1] and floor(gauge_val[2]) == correct[2]):
 		held_time += 1
-		set_progress(held_time * 100/60)
+		$output_bar.set_bar(held_time * 100/60)
+		#if held for full time, complete game
 		if held_time > 60:
 			completed = true
-			set_progress(100)
+			$output_bar.set_bar(100)
+			$output_bar.set_bar_color("green")
+			$output_bar.set_message(message)
 	
 func update_gauge(num, val, light):
 	var color = 1 
@@ -65,10 +69,6 @@ func update_gauge(num, val, light):
 		light[i].frame = color
 	for j in range(floor(val), light.size()):
 		light[j].frame = 0
-
-#update progress bar at the bottom of the game, 86 is the length of the bar
-func set_progress(percent):
-	get_node("output_bar/load_bar").rect_size.x = int(86 * percent/100)
 
 func assign_input():
 	match panel_location:
@@ -91,4 +91,4 @@ func assign_input():
 
 	$gauge_0/button_label.text = key[0]
 	$gauge_1/button_label.text = key[1]
-	$gauge_2/button_label.text = key[2]	
+	$gauge_2/button_label.text = key[2]

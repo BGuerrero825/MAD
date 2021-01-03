@@ -1,5 +1,7 @@
 extends Node2D
 
+export var message := "PASS: 3"
+export var completed := false
 export var panel_location := 0  # panel location 0-3
 
 # Inputs
@@ -7,7 +9,6 @@ var key := ['-','-','-','-','-','-','-','-']
 var lock_state := [0,0,0,0,0,0,0,0]
 var solution := [1,1,1,0,0,0,0,0]
 var progress := 0
-var completed := false
 onready var lock := get_node("keys").get_children()
 
 # Called when the node enters the scene tree for the first time.
@@ -27,14 +28,17 @@ func _process(delta):
 	#add progress if key turns matches the solution
 	if lock_state == solution and not completed:
 		progress += 1
-		set_progress(stepify(progress/10,5))
+		$output_bar.set_bar(progress/10)
 	#randomize solution at 34% and 67% intervals
 	if (progress == 340) or (progress == 670):
 		randomize_solution()
 		progress += 1
 	#when game completed set progress to 100 and stop updating
 	if progress > 990:
-		set_progress(100)
+		completed = true
+		$output_bar.set_bar(100)
+		$output_bar.set_bar_color("green")
+		$output_bar.set_message(message)
 
 func randomize_solution():
 	randomize()
@@ -44,10 +48,6 @@ func randomize_solution():
 			lock[i].get_node("light").frame = 1
 		else:
 			lock[i].get_node("light").frame = 0
-
-#update progress bar at the bottom of the game, 86 is the length of the bar
-func set_progress(percent):
-	get_node("output_bar/load_bar").rect_size.x = int(86 * percent/100)
 	
 
 func assign_input():

@@ -1,7 +1,8 @@
 extends Node2D
 
+export var message := "STAT: 3"
+export var completed := false
 export var panel_location := 0
-export var message := "DEFAULT"
 
 const TUBE_WIDTH = 6
 const COLOR_ORANGE = Color('fb9d28')
@@ -66,8 +67,10 @@ func _on_spawn_timer_timeout():
 
 
 func _on_target_area_entered(area):
-	$output_bar/output_message.text = message
-	$target/ColorRect.color = COLOR_GREEN
+	completed = true
+	$output_bar.set_bar(100)
+	$output_bar.set_bar_color("green")
+	$output_bar.set_message(message)
 
 
 func assign_input():

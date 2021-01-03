@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://OutputBar/output_bar.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/soviet_font_12.tres" type="DynamicFont" id=2]
+[ext_resource path="res://OutputBar/output_bar_frame.png" type="Texture" id=3]
+[ext_resource path="res://OutputBar/output_bar.gd" type="Script" id=4]
+
+[node name="output_bar" type="Sprite"]
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 4 )
+
+[node name="load_bar" type="ColorRect" parent="."]
+margin_left = 2.0
+margin_top = 2.0
+margin_bottom = 13.0
+color = Color( 0.984314, 0.615686, 0.156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="output_message" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 1.0
+margin_right = 84.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 2 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="output_bar_frame" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
