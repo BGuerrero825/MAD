@@ -104,7 +104,5 @@ autostart = true
 visible = false
 position = Vector2( 111.503, 15.1191 )
 z_index = 10
-current_level = null
-message_prompt_list = null
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="HeartBeat" to="." method="_on_HeartBeat_timeout"]

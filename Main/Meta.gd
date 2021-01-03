@@ -52,7 +52,12 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_released("submit_report") and not $SubmitReport.visible:  # ENTER
 		$SubmitReport.visible = true
-		print("BEGIN INPUTTING CODES")
+		
+		$SpawnTimer.stop()
+		for cover in cover_list:
+			cover.visible = true
+		for game in active_games:
+			game.free()
 
 
 func _on_HeartBeat_timeout():
