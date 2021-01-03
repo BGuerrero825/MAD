@@ -22,7 +22,7 @@ var game_timer_list = [30,     30,     30,       30,      30,     30,         30
 var message_options = ['FREQ', 'SAT', 'CODE', 'SER', 'ORD', 'MSG', 'SIGN', 'STAT', 'GEO', 'POS', 'TRAJ', 'KEY', 'RES', 'SPD']
 var number_of_messages = 5
 var message_prompt_list = []  # populated in _ready
-var message_answer_list = []  # populated in _ready (1 - 5)
+var message_saved_prompt_list = []  # copy of messages
 
 onready var cover_list = [$StaticScreen/cover_0, $StaticScreen/cover_1, $StaticScreen/cover_2, $StaticScreen/cover_3]
 onready var spawn_list = [$StaticScreen/panel_0_spawn, $StaticScreen/panel_1_spawn, $StaticScreen/panel_2_spawn, $StaticScreen/panel_3_spawn]
@@ -35,23 +35,25 @@ func _ready():
 	
 	# Randomize messages
 #	message_options_list.shuffle()
-
 	for i in range(number_of_messages):
-		message_prompt_list.append(message_options[i])
-		message_answer_list.append(randi() % 5 + 1)
-	
+		message_prompt_list.append(message_options[i] + " - " + str(randi()%5+1))
+	message_saved_prompt_list = message_prompt_list.duplicate()
+
+
 func _process(delta):
+	
 	for active_game in active_games:
-		if active_game.completed:
-			# remove active_game from active list
-			active_games.erase(active_game)
-#			print("ACTIVE_GAME REMOVED: ", active_game)
-			# start timer
-			var new_read_timer = Timer.new()
-			new_read_timer.connect("timeout", self, "_on_read_timer_timeout", [active_game])
-			add_child(new_read_timer)
-			new_read_timer.set('wait_time', READ_TIME)
-			new_read_timer.start()
+		if active_game:
+			if active_game.completed:
+				# remove active_game from active list
+				active_games.erase(active_game)
+	#			print("ACTIVE_GAME REMOVED: ", active_game)
+				# start timer
+				var new_read_timer = Timer.new()
+				new_read_timer.connect("timeout", self, "_on_read_timer_timeout", [active_game])
+				add_child(new_read_timer)
+				new_read_timer.set('wait_time', READ_TIME)
+				new_read_timer.start()
 
 
 func _on_SpawnTimer_timeout():
@@ -65,7 +67,7 @@ func _on_SpawnTimer_timeout():
 		if game_num >= 0:
 			total_active += 1
 
-	if total_active < 4:  # less than 4 active panels, can add
+	if total_active < 4:  # less than 4 active panels, can add game
 		# get random panel number that isn't active
 		var panel_idx = randi() % 4
 		while panels_game_type[panel_idx] > -1:  # find new rand_idx
@@ -76,19 +78,41 @@ func _on_SpawnTimer_timeout():
 		
 		var new_game = game_list[new_game_idx].instance()
 		new_game.set('panel_location', panel_idx)
-		new_game.set('message', "TEST")
+		#var new_msg = message_prompt_list.pop + " " + message_answer_list
+		new_game.set('message', message_prompt_list.pop_back())
+		print(message_prompt_list)
+		
+		# START TIMER TO COMPLETE MINIGAME, SEND GAME TO THAT JUST LIKE READ_TIMER
+		var new_read_timer = Timer.new()
+		new_read_timer.connect("timeout", self, "_countdown_timer", [new_game])
+		add_child(new_read_timer)
+		new_read_timer.set('wait_time', game_timer_list[new_game_idx])
+		new_read_timer.start()
 		
 		spawn_list[panel_idx].add_child(new_game)
 		cover_list[panel_idx].hide()
 		
 		active_games.append(new_game)
 
+
+func _countdown_timer(game):
+	if game:
+		panels_game_type[game.panel_location] = -1
+		cover_list[game.panel_location].show()
+		message_prompt_list.append(game.message)
+		
+		game.free()
+
 func _on_read_timer_timeout(game):
 #	print("READ_TIMER")
 #	print("active_games: ", active_games)
 #	print("game: ", game)
 	if game:  # check if it exists
-		print("PANEL:", game.panel_location)
+		#print("PANEL:", game.panel_location)
+		number_of_messages -= 1
 		panels_game_type[game.panel_location] = -1
+		cover_list[game.panel_location].show()
 		game.free()
+		if number_of_messages <= 0:
+			print("ALL MESSAGES RECEIVED")
 
