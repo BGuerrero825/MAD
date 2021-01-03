@@ -16,8 +16,8 @@ onready var laserAlign = load("res://LaserAlign/LaserAlign.tscn")
 onready var reboot = load("res://Reboot/Reboot.tscn")
 onready var tubes = load("res://Tubes/Tubes.tscn")
 
-onready var game_list =       [binary, charge, dialTune, findSeq, gauges, laserAlign, reboot, tubes]
-var game_timer_list = [30,     30,     30,       30,      30,     30,         30,     30]
+onready var game_list =       [binary, charge, dialTune, findSeq, gauges, laserAlign, reboot, tubes, keyTurn]
+var game_timer_list = [30,     30,     30,       30,      30,     30,         30,     30,        30]
 
 var message_options = ['FREQ', 'SAT', 'CODE', 'SER', 'ORD', 'MSG', 'SIGN', 'STAT', 'GEO', 'POS', 'TRAJ', 'KEY', 'RES', 'SPD']
 var number_of_messages = 5
