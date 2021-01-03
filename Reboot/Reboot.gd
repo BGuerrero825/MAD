@@ -5,6 +5,8 @@ export var completed := false
 export var panel_location := 0
 export var game_timer := 45
 
+var progress := 0
+
 export var download_speed := 1
 
 const COLOR_ORANGE = Color('fb9d28')
@@ -103,9 +105,14 @@ func _on_load_timer_timeout():
 	if current_input == console_list[console_idx][0]:  # user chose correctly
 		$ui/load_text.bbcode_text = download_txt_pass
 		console_idx += 1
+		progress += 20
+		$output_bar.set_bar(progress)
 	else:  # user chose the wrong prompt
 		$ui/load_text.bbcode_text = download_txt_fail
 		console_idx = max(0, console_idx-1)  # don't go below 0
+		if progress > 0:
+			progress -= 20
+		$output_bar.set_bar(progress)
 	
 	$alert_timer.start()
 
@@ -116,6 +123,9 @@ func _on_alert_timer_timeout():
 	console_alert = false
 	$ui/monitor_text.percent_visible = 0
 	if console_idx >= len(console_list):
+		$output_bar.set_bar(100)
+		$output_bar.set_bar_color("green")
+		$output_bar.set_message(message)
 		completed = true
 		$ui/monitor_text.text = "SYSTEM SUCCESSFULLY REBOOTED. GOOD JOB."
 		$ui/monitor_text.percent_visible = 1

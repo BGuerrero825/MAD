@@ -3,7 +3,7 @@ extends Node2D
 export var message := "NULL"
 export var completed := false
 export var panel_location := 0
-export var game_timer := 45
+export var game_timer := 30
 
 export var electric_move_time := 0.2  # assign in _ready()
 
@@ -34,7 +34,7 @@ var electric_ball_vec = Vector2(1, 0)  # Physical location of the ball
 var electric_ball_dir = Vector2.RIGHT
 var reset_electric_ball = false
 
-var completion := 0  # set in ball_reached_end()
+var completion := 2  # set in ball_reached_end()
 onready var completion_lights = [$mx_frame_overlay/completion_1, 
 		$mx_frame_overlay/completion_2, $mx_frame_overlay/completion_3]
 

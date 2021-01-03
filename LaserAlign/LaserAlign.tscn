@@ -35,8 +35,9 @@ position = Vector2( 7, 19 )
 position = Vector2( 8, 76 )
 
 [node name="ui" type="Control" parent="."]
+margin_top = -100.0
 margin_right = 96.0
-margin_bottom = 120.0
+margin_bottom = 20.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -90,7 +91,7 @@ __meta__ = {
 }
 
 [node name="spawn_point" type="Position2D" parent="."]
-position = Vector2( 48, 96 )
+position = Vector2( 48, 94 )
 z_index = 10
 
 [node name="ColorRect" type="ColorRect" parent="spawn_point"]
@@ -104,7 +105,7 @@ __meta__ = {
 }
 
 [node name="spawn" type="Sprite" parent="spawn_point"]
-position = Vector2( 0, 5 )
+position = Vector2( 0, 6 )
 scale = Vector2( 1, -1 )
 texture = ExtResource( 7 )
 
@@ -138,17 +139,17 @@ position = Vector2( 5.39729, 13.5297 )
 shape = SubResource( 1 )
 
 [node name="up_down_arrow" type="Sprite" parent="."]
-position = Vector2( 16, 105 )
+position = Vector2( 16, 5 )
 texture = ExtResource( 5 )
 centered = false
 
 [node name="up_down_arrow2" type="Sprite" parent="."]
-position = Vector2( 68, 105 )
+position = Vector2( 68, 5 )
 texture = ExtResource( 5 )
 centered = false
 
 [node name="output_bar" parent="." instance=ExtResource( 6 )]
-position = Vector2( 3, 3 )
+position = Vector2( 3, 102 )
 
 [node name="Borders" type="Area2D" parent="."]
 script = ExtResource( 9 )
@@ -162,11 +163,11 @@ position = Vector2( 142, 64 )
 shape = SubResource( 2 )
 
 [node name="bottom" type="CollisionShape2D" parent="Borders"]
-position = Vector2( 48, 157 )
+position = Vector2( 48, 152 )
 shape = SubResource( 2 )
 
 [node name="top" type="CollisionShape2D" parent="Borders"]
-position = Vector2( 48, -29 )
+position = Vector2( 48, -33 )
 shape = SubResource( 2 )
 
 [node name="spawn_timer" type="Timer" parent="."]
@@ -174,7 +175,7 @@ wait_time = 0.05
 autostart = true
 
 [node name="target" type="Area2D" parent="."]
-position = Vector2( 48, 21 )
+position = Vector2( 48, 18 )
 script = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="target"]
@@ -202,5 +203,5 @@ centered = false
 [connection signal="area_entered" from="reflector_right" to="reflector_right" method="_on_reflector_left_area_entered"]
 [connection signal="area_entered" from="Borders" to="Borders" method="_on_Borders_area_entered"]
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="area_entered" from="target" to="target" method="_on_target_area_entered"]
 [connection signal="area_entered" from="target" to="." method="_on_target_area_entered"]
+[connection signal="area_entered" from="target" to="target" method="_on_target_area_entered"]
