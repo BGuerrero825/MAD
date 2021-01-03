@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Main/Static Screen.png" type="Texture" id=1]
 [ext_resource path="res://Main/cover.png" type="Texture" id=2]
@@ -6,6 +6,126 @@
 [ext_resource path="res://SubmitReport/SubmitReport.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Fonts/soviet_computer.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Main/message.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "close_cover0"
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaticScreen/cover_0:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "close_cover1"
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaticScreen/cover_1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "close_cover2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaticScreen/cover_2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "close_cover3"
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaticScreen/cover_3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 3, 4, 5, 6, 7, 7 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "open_cover0"
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaticScreen/cover_0:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 6, 5, 4, 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "open_cover1"
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaticScreen/cover_1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 6, 5, 4, 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "open_cover2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaticScreen/cover_2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.301, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 6, 5, 0, 4, 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "open_cover3"
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaticScreen/cover_3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 6, 5, 4, 3, 2, 1, 0 ]
+}
 
 [node name="Base" type="Node2D"]
 script = ExtResource( 3 )
@@ -72,24 +192,36 @@ __meta__ = {
 }
 
 [node name="cover_0" type="Sprite" parent="StaticScreen"]
-position = Vector2( 58, 168 )
+position = Vector2( 0, 96 )
 z_index = 3
 texture = ExtResource( 2 )
+centered = false
+hframes = 8
+frame = 7
 
 [node name="cover_1" type="Sprite" parent="StaticScreen"]
-position = Vector2( 179, 168 )
+position = Vector2( 120, 96 )
 z_index = 3
 texture = ExtResource( 2 )
+centered = false
+hframes = 8
+frame = 7
 
 [node name="cover_2" type="Sprite" parent="StaticScreen"]
-position = Vector2( 301, 168 )
+position = Vector2( 242, 96 )
 z_index = 3
 texture = ExtResource( 2 )
+centered = false
+hframes = 8
+frame = 7
 
 [node name="cover_3" type="Sprite" parent="StaticScreen"]
-position = Vector2( 422, 168 )
+position = Vector2( 363, 95 )
 z_index = 3
 texture = ExtResource( 2 )
+centered = false
+hframes = 8
+frame = 7
 
 [node name="ShiftTimer" type="Timer" parent="."]
 
@@ -135,6 +267,16 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/close_cover0 = SubResource( 1 )
+anims/close_cover1 = SubResource( 3 )
+anims/close_cover2 = SubResource( 4 )
+anims/close_cover3 = SubResource( 5 )
+anims/open_cover0 = SubResource( 2 )
+anims/open_cover1 = SubResource( 6 )
+anims/open_cover2 = SubResource( 7 )
+anims/open_cover3 = SubResource( 8 )
 [connection signal="timeout" from="ShiftTimer" to="." method="_on_ShiftTimer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="HeartBeat" to="." method="_on_HeartBeat_timeout"]

@@ -3,7 +3,7 @@ extends Node2D
 var panels_game_type = [-1, -1, -1, -1]  # -1 indicates no game
 var active_games = []
 
-const WAIT_BETWEEN_GAMES = 20
+const WAIT_BETWEEN_GAMES = 10
 const READ_TIME = 8
 const SHIFT_TIME = 120
 
@@ -24,7 +24,7 @@ var number_of_messages = 6  # 6 is max
 var message_prompt_list = []  # populated in _ready
 var message_saved_prompt_list = []  # copy of messages
 
-onready var cover_list = [$StaticScreen/cover_0, $StaticScreen/cover_1, $StaticScreen/cover_2, $StaticScreen/cover_3]
+#onready var cover_list = [$StaticScreen/cover_0, $StaticScreen/cover_1, $StaticScreen/cover_2, $StaticScreen/cover_3]
 onready var spawn_list = [$StaticScreen/panel_0_spawn, $StaticScreen/panel_1_spawn, $StaticScreen/panel_2_spawn, $StaticScreen/panel_3_spawn]
 onready var loadbar_list = [$StaticScreen/panel_0_spawn/loadbar_0, $StaticScreen/panel_1_spawn/loadbar_1, $StaticScreen/panel_2_spawn/loadbar_2, $StaticScreen/panel_3_spawn/loadbar_3]
 const LOAD_BAR_RIGHT_MARGIN = 70
@@ -39,8 +39,8 @@ var pass_message = "GOOD JOB COMRADE. TAKE A QUICK BREAK AND I WILL TAKE OVER. S
 func _ready():
 	randomize()
 	#spawn a random game in a random location at the start
-	for cover in cover_list:
-		cover.show()
+#	for cover in cover_list:
+#		cover.show()
 	
 	# Randomize messages
 
@@ -68,8 +68,9 @@ func _process(delta):
 			$SubmitReport.visible = true
 			
 			$SpawnTimer.stop()
-			for cover in cover_list:
-				cover.visible = true
+			for i in range(4):
+				var cover_txt = "close_cover" + str(i)
+				$AnimationPlayer.play(cover_txt)
 			for game in active_games:
 				if game:
 					game.free()
@@ -88,6 +89,7 @@ func _on_HeartBeat_timeout():
 				add_child(new_read_timer)
 				new_read_timer.set('wait_time', READ_TIME)
 				new_read_timer.start()
+
 
 
 func _on_SpawnTimer_timeout():
@@ -124,7 +126,8 @@ func _on_SpawnTimer_timeout():
 		new_read_timer.start()
 		
 		spawn_list[panel_idx].add_child(new_game)
-		cover_list[panel_idx].hide()
+#		cover_list[panel_idx].hide()
+		$AnimationPlayer.play("open_cover" + str(panel_idx))
 		
 		loadbar_list[new_game.panel_location].margin_right = 30
 		
@@ -144,7 +147,8 @@ func _countdown_timer(game):
 		if game.game_timer <= 0:
 			loadbar_list[game.panel_location].margin_right = 70
 			panels_game_type[game.panel_location] = -1
-			cover_list[game.panel_location].show()
+#			cover_list[game.panel_location].show()
+			$AnimationPlayer.play("close_cover" + str(game.panel_location))
 			message_prompt_list.append(game.message)
 			
 			game.free()
@@ -159,7 +163,8 @@ func _on_read_timer_timeout(game):
 		number_of_messages -= 1
 		panels_game_type[game.panel_location] = -1
 		loadbar_list[game.panel_location].margin_right = 70
-		cover_list[game.panel_location].show()
+#		cover_list[game.panel_location].show()
+		$AnimationPlayer.play("close_cover" + str(game.panel_location))
 		game.free()
 		if number_of_messages <= 0:
 			print("ALL MESSAGES RECEIVED")
