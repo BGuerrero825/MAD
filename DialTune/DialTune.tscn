@@ -12,6 +12,10 @@
 script = ExtResource( 1 )
 panel_location = 3
 
+[node name="frame" type="Sprite" parent="."]
+position = Vector2( 48, 60 )
+texture = ExtResource( 3 )
+
 [node name="Graph1" type="ReferenceRect" parent="."]
 margin_left = 4.0
 margin_top = 4.0
@@ -54,11 +58,6 @@ hframes = 4
 position = Vector2( 70, 74 )
 texture = ExtResource( 2 )
 hframes = 4
-
-[node name="frame" type="Sprite" parent="."]
-position = Vector2( 48, 60 )
-z_index = -1
-texture = ExtResource( 3 )
 
 [node name="dial_a_left" type="Label" parent="."]
 margin_left = 4.0

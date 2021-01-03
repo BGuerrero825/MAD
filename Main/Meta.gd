@@ -20,7 +20,7 @@ onready var tubes = load("res://Tubes/Tubes.tscn")
 onready var game_list = [binary, charge, dialTune, findSeq, gauges, laserAlign, reboot, tubes, keyTurn]
 
 var message_options = ['FREQ', 'SAT', 'CODE', 'SER', 'ORD', 'MSG', 'SIGN', 'STAT', 'GEO', 'POS', 'TRAJ', 'KEY', 'RES', 'SPD']
-var number_of_messages = 6  # 6 is max
+var number_of_messages = 4  # 6 is max
 var message_prompt_list = []  # populated in _ready
 var message_saved_prompt_list = []  # copy of messages
 
@@ -29,9 +29,9 @@ onready var spawn_list = [$StaticScreen/panel_0_spawn, $StaticScreen/panel_1_spa
 onready var loadbar_list = [$StaticScreen/panel_0_spawn/loadbar_0, $StaticScreen/panel_1_spawn/loadbar_1, $StaticScreen/panel_2_spawn/loadbar_2, $StaticScreen/panel_3_spawn/loadbar_3]
 const LOAD_BAR_RIGHT_MARGIN = 70
 
-var start_message = "GOOD MORNING COMRADE.  CONGRATULATIONS ON FINISHING YOUR INITIAL QUALIFICATION. DON’T FORGET TO WRITE DOWN ALL RESULTS YOU COLLECT IN YOUR JOURNAL. THE AMERICANS HAVE BEEN QUIET LATELY SO DON’T EXPECT THAT MUCH ACTIVITY."
-var fail_message = "I FOUND SEVERAL ERRORS IN YOUR REPORT. TRY AGAIN."
-var pass_message = "GOOD JOB COMRADE. TAKE A QUICK BREAK AND I WILL TAKE OVER. SEE YOU SOON."
+var start_message = "GOOD MORNING COMRADE.  CONGRATULATIONS ON FINISHING YOUR INITIAL QUALIFICATION. DON’T FORGET TO WRITE DOWN ALL RESULTS YOU COLLECT IN YOUR JOURNAL. REAGAN HAS BEEN VERY AGGRESSIVE LATELY. EXPECT MANY SIGNALS. PRESS ENTER TO CONTINUE"
+var fail_message = "THANK YOU FOR YOUR REPORT. WE ARE LAUNCHING COUNTER NUCLEAR ICBMS NOW.\n\n GAME OVER - BAD ENDING, YOU HAD INCORRECT RESPONSES"
+var pass_message = "THANK YOU FOR SEEING THE ANOMALOUS SIGNALS. YOUR REPORT STOPPED US FROM LAUNCHING.\n\n GAME OVER - GOOD ENDING"
 
 
 #onready var report = 
@@ -60,9 +60,11 @@ func _ready():
 	
 	$ShiftTimer.wait_time = SHIFT_TIME
 	
+	$AnimationPlayer_supervisor.play("yelling")
 
 
 func _process(delta):
+	$clock.text = str(int($ShiftTimer.time_left))
 	if $ShiftTimer.time_left < (SHIFT_TIME-5) and not $speech.visible:
 		if Input.is_action_just_released("submit_report") and not $SubmitReport.visible:  # ENTER
 			$SubmitReport.visible = true
@@ -166,11 +168,12 @@ func _on_read_timer_timeout(game):
 #		cover_list[game.panel_location].show()
 		$AnimationPlayer.play("close_cover" + str(game.panel_location))
 		game.free()
-		if number_of_messages <= 0:
-			print("ALL MESSAGES RECEIVED")
+#		if number_of_messages <= 0:
+#			print("ALL MESSAGES RECEIVED")
 
 
 func _on_SubmitReport_submitted(correct_submission):
+	$AnimationPlayer_supervisor.play("yelling")
 	if correct_submission:
 		$SubmitReport.hide()
 		$speech.set('message_text', pass_message)
@@ -184,6 +187,7 @@ func _on_SubmitReport_submitted(correct_submission):
 
 
 func _on_speech_message_completed(message_played):
+	$AnimationPlayer_supervisor.play("silhouette")
 	if message_played == start_message:
 		print("GREET_MESSAGE PLAYED")
 		$SpawnTimer.start()

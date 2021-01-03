@@ -3,7 +3,7 @@ extends Node2D
 export var message := "NULL"
 export var completed := false
 export var panel_location := 0  # panel location 0-3
-export var game_timer := 25
+export var game_timer := 45
 
 # Randomize in _ready() to not be the same as solution
 var sequence := [1,6,4,3,2,5]
