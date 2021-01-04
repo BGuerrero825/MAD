@@ -37,6 +37,8 @@ var pass_message = "THANK YOU FOR SEEING THE ANOMALOUS SIGNALS. YOUR REPORT STOP
 #onready var report = 
 
 func _ready():
+	OS.set_window_maximized(true)
+	$music.play()
 	randomize()
 	#spawn a random game in a random location at the start
 #	for cover in cover_list:
